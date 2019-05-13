@@ -5,7 +5,9 @@ const PaginationFooter = ({ currentPage = 1, totalPages }) => {
   return (
     <nav>
       {currentPage > 1 && (
-        <Link to={`/${Number(currentPage) - 1}`}>Prev page |</Link>
+        <Link to={`/${currentPage === "2" ? "" : Number(currentPage) - 1}`}>
+          Prev page |
+        </Link>
       )}{" "}
       Page {currentPage} |{" "}
       {currentPage < totalPages && (
