@@ -1,33 +1,12 @@
-import React, { useState, useEffect } from "react";
-import fetchTopics from "../queries/fetchTopics";
+import React from "react";
+import { Router } from "@reach/router";
+import AllTopics from "../components/AllTopics";
 
 const TopicList = () => {
-  const [state, setState] = useState({ topics: null });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const topics = await fetchTopics();
-
-      setState(topics);
-    };
-    fetchData();
-  }, []);
-
   return (
-    <div>
-      <h2>All Topics</h2>
-      {state.topics ? (
-        <ul>
-          {state.topics.map(topic => (
-            <li key={topic.slug}>
-              {topic.slug} - {topic.description}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        "Loading topics..."
-      )}
-    </div>
+    <Router>
+      <AllTopics path="/" />
+    </Router>
   );
 };
 

@@ -14,7 +14,7 @@ function App() {
       <NavigationBar />
       <Router>
         <ArticleList path="/" />
-        <TopicList path="/topics" />
+        <TopicList path="/topics/*" />
       </Router>
     </div>
   );
