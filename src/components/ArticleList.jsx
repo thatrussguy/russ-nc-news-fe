@@ -1,32 +1,47 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "@reach/router";
+import { Link, Router } from "@reach/router";
+
+import PaginationFooter from "../components/PaginationFooter";
+
 import fetchArticles from "../queries/fetchArticles";
 
-const ArticleList = ({ topic = "" }) => {
-  const [state, setState] = useState({ articles: null });
+const ArticleList = ({ topic = "", currentPage = 1 }) => {
+  const [state, setState] = useState({ articles: null, currentPage: 1 });
 
   useEffect(() => {
     const fetchData = async () => {
-      const articles = await fetchArticles(topic);
-      setState(articles.message ? { articles: [] } : articles);
+      const { articles, total_count } = await fetchArticles(topic, currentPage);
+      setState(
+        articles.message
+          ? { articles: [], currentPage }
+          : { articles, total_count, currentPage }
+      );
     };
     fetchData();
-  }, [topic]);
+  }, [currentPage, topic]);
 
   return (
     <div>
       <h2>Latest Articles</h2>
       {state.articles ? (
         state.articles.length ? (
-          <ul>
-            {state.articles.map(article => (
-              <li key={article.article_id}>
-                <Link to={`/articles/${article.article_id}`}>
-                  {article.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <ul>
+              {state.articles.map(article => (
+                <li key={article.article_id}>
+                  <Link to={`/articles/${article.article_id}`}>
+                    {article.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Router>
+              <PaginationFooter
+                path="*"
+                totalPages={Math.ceil(state.total_count / 10)}
+              />
+            </Router>
+          </div>
         ) : (
           "No Articles for this topic"
         )

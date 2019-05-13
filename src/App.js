@@ -17,6 +17,7 @@ function App() {
         <ArticleList path="/" />
         <TopicList path="/topics/*" />
         <Article path="/articles/:article_id" />
+        <ArticleList path="/:currentPage" />
       </Router>
     </div>
   );
