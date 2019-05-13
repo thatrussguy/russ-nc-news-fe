@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "@reach/router";
 import fetchArticles from "../queries/fetchArticles";
 
 const ArticleList = ({ topic = "" }) => {
@@ -19,7 +20,11 @@ const ArticleList = ({ topic = "" }) => {
         state.articles.length ? (
           <ul>
             {state.articles.map(article => (
-              <li key={article.article_id}>{article.title}</li>
+              <li key={article.article_id}>
+                <Link to={`/articles/${article.article_id}`}>
+                  {article.title}
+                </Link>
+              </li>
             ))}
           </ul>
         ) : (
