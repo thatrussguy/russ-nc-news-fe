@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
-import fetchTopics from "../queries/fetchTopics";
+import fetchTopics from "../../queries/fetchTopics";
 
 const AllTopics = () => {
   const [topics, setTopics] = useState(null);

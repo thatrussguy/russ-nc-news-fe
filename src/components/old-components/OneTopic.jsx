@@ -1,6 +1,6 @@
 import React from "react";
 import { Router } from "@reach/router";
-import ArticleList from "./ArticleList";
+import ArticleList from "../ArticleList";
 
 const OneTopic = ({ topic }) => {
   return (

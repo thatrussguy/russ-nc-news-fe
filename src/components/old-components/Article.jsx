@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import fetchArticle from "../queries/fetchArticle";
-import fetchComments from "../queries/fetchComments";
+import fetchArticle from "../../queries/fetchArticle";
+import fetchComments from "../../queries/fetchComments";
 
 const Article = ({ article_id }) => {
   const [state, setState] = useState({ article: null, comments: null });
