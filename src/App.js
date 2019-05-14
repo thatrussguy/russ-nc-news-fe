@@ -18,7 +18,7 @@ function App() {
       <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <Router>
         <HomePage path="/" />
-        <TopicsPage path="/topics"/>
+        <TopicsPage path="/topics/*" />
       </Router>
     </div>
   );

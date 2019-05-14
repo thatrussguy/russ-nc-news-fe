@@ -4,16 +4,16 @@ import { Button, Card } from "@blueprintjs/core";
 
 import fetchArticles from "../queries/fetchArticles";
 
-const ArticleList = () => {
+const ArticleList = ({ topic }) => {
   const [articles, setArticles] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const articles = await fetchArticles();
+      const articles = await fetchArticles({ topic });
       setArticles(articles ? articles : []);
     };
     fetchData();
-  }, []);
+  }, [topic]);
 
   return (
     articles && (
