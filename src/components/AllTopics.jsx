@@ -3,13 +3,13 @@ import { Link } from "@reach/router";
 import fetchTopics from "../queries/fetchTopics";
 
 const AllTopics = () => {
-  const [state, setState] = useState({ topics: null });
+  const [topics, setTopics] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const topics = await fetchTopics();
 
-      setState(topics);
+      setTopics(topics);
     };
     fetchData();
   }, []);
@@ -17,12 +17,12 @@ const AllTopics = () => {
   return (
     <div path="/">
       <h2>All Topics</h2>
-      {state.topics ? (
+      {topics ? (
         <ul>
-          {state.topics.map(topic => (
-            <li key={topic.slug}>
-              <Link to={`/topics/${topic.slug}`}>
-                {topic.slug} - {topic.description}
+          {topics.map(({ slug, description }) => (
+            <li key={slug}>
+              <Link to={`/topics/${slug}`}>
+                {slug} - {description}
               </Link>
             </li>
           ))}
