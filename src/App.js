@@ -8,6 +8,7 @@ import { Router } from "@reach/router";
 
 import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
+import TopicsPage from "./components/TopicsPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -17,11 +18,7 @@ function App() {
       <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <Router>
         <HomePage path="/" />
-        {/* <ArticleList path="/:currentPage" />
-        <Article path="/articles/:article_id" />
-        <TopicList path="/topics" />
-        <ArticleList path="/topics/:topic/" />
-        <ArticleList path="/topics/:topic/:currentPage" /> */}
+        <TopicsPage path="/topics"/>
       </Router>
     </div>
   );
