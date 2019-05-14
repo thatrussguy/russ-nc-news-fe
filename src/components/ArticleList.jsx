@@ -20,7 +20,7 @@ const ArticleList = ({ topic }) => {
       <div>
         {articles.map(({ title, author, article_id }) => (
           <Card interactive={true} className="article-list" key={article_id}>
-            <h5>{title}</h5>
+            <h3>{title}</h3>
             <p>written by {author}</p>
             <Link to={`/articles/${article_id}`}>
               <Button>Read</Button>

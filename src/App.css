@@ -1,4 +1,9 @@
 .article-list,
-.topic-list {
+.topic-list,
+.comment-list,
+.article {
   margin: 1vw;
+}
+.comment-list {
+  margin-left: 2vw;
 }
