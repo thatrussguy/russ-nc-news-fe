@@ -31,7 +31,6 @@ const ArticleList = ({ topic = null, currentPage = 1 }) => {
   }, [currentPage, sort.order, sort.sort_by, topic]);
 
   const onClick = e => {
-    console.log(e.target.id);
     e.preventDefault();
     setSort({
       sort_by: e.target.id,
