@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import { Router } from "@reach/router";
+
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "./App.css";
 
-import Header from "./components/Header";
+import { Router } from "@reach/router";
+
 import NavigationBar from "./components/NavigationBar";
 import ArticleList from "./components/ArticleList";
 import TopicList from "./components/TopicList";
 import Article from "./components/Article";
+
+import NavBar from "./components/NavBar";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   return (
     <div className="App">
-      <Header />
-      <NavigationBar
-        loggedInUser={loggedInUser}
-        setLoggedInUser={setLoggedInUser}
-      />
+      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <Router>
         <ArticleList path="/" />
         <ArticleList path="/:currentPage" />
