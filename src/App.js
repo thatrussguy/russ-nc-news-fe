@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Router } from "@reach/router";
 import "./App.css";
 
@@ -9,10 +9,12 @@ import TopicList from "./components/TopicList";
 import Article from "./components/Article";
 
 function App() {
+  const [state] = useState({ loggedInUser: null });
+
   return (
     <div className="App">
       <Header />
-      <NavigationBar />
+      <NavigationBar loggedInUser={state.loggedInUser} />
       <Router>
         <ArticleList path="/" />
         <ArticleList path="/:currentPage" />
