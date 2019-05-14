@@ -9,12 +9,15 @@ import TopicList from "./components/TopicList";
 import Article from "./components/Article";
 
 function App() {
-  const [state] = useState({ loggedInUser: null });
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   return (
     <div className="App">
       <Header />
-      <NavigationBar loggedInUser={state.loggedInUser} />
+      <NavigationBar
+        loggedInUser={loggedInUser}
+        setLoggedInUser={setLoggedInUser}
+      />
       <Router>
         <ArticleList path="/" />
         <ArticleList path="/:currentPage" />
