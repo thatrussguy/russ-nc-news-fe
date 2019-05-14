@@ -1,9 +1,13 @@
 .article-list,
 .topic-list,
 .comment-list,
-.article {
+.article,
+.login-form {
   margin: 1vw;
 }
 .comment-list {
   margin-left: 2vw;
+}
+.login-button {
+  margin-top: 1vh;
 }

@@ -25,15 +25,9 @@ const NavBar = ({ loggedInUser, setLoggedInUser }) => {
             }}
           />
         ) : (
-          <Button
-            className="bp3-minimal"
-            icon="log-in"
-            text="Login"
-            onClick={e => {
-              e.preventDefault();
-              setLoggedInUser("Guest");
-            }}
-          />
+          <Link to="/login">
+            <Button className="bp3-minimal" icon="log-in" text="Login" />
+          </Link>
         )}
       </Navbar.Group>
     </Navbar>

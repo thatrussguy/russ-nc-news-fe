@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
 import TopicsPage from "./components/TopicsPage";
 import ArticlePage from "./components/ArticlePage";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -21,6 +22,11 @@ function App() {
         <HomePage path="/" />
         <TopicsPage path="/topics/*" />
         <ArticlePage path="/articles/:article_id" />
+        <LoginPage
+          path="/login"
+          loggedInUser={loggedInUser}
+          setLoggedInUser={setLoggedInUser}
+        />
       </Router>
     </div>
   );
