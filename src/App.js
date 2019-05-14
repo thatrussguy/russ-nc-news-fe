@@ -6,7 +6,6 @@ import "./App.css";
 
 import { Router } from "@reach/router";
 
-import NavigationBar from "./components/NavigationBar";
 import ArticleList from "./components/ArticleList";
 import TopicList from "./components/TopicList";
 import Article from "./components/Article";
