@@ -1,9 +1,10 @@
 import backEndApiUrl from "../config/urls";
+import axios from "axios";
 
-const fetchArticles = (topic, page = 1) => {
-  return fetch(`${backEndApiUrl}/articles?topic=${topic}&p=${page}`).then(
-    response => response.json()
-  );
+const fetchArticles = params => {
+  return axios
+    .get(`${backEndApiUrl}/articles`, { params })
+    .then(({ data }) => data);
 };
 
 export default fetchArticles;

@@ -10,7 +10,10 @@ const ArticleList = ({ topic = "", currentPage = 1 }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { articles, total_count } = await fetchArticles(topic, currentPage);
+      const { articles, total_count } = await fetchArticles({
+        topic,
+        p: currentPage
+      });
       setState(
         articles.message
           ? { articles: [], currentPage }
@@ -39,6 +42,7 @@ const ArticleList = ({ topic = "", currentPage = 1 }) => {
               <PaginationFooter
                 path="*"
                 totalPages={Math.ceil(state.total_count / 10)}
+                currentPage={currentPage}
               />
             </Router>
           </div>

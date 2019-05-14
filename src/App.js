@@ -15,9 +15,11 @@ function App() {
       <NavigationBar />
       <Router>
         <ArticleList path="/" />
-        <TopicList path="/topics/*" />
-        <Article path="/articles/:article_id" />
         <ArticleList path="/:currentPage" />
+        <Article path="/articles/:article_id" />
+        <TopicList path="/topics" />
+        <ArticleList path="/topics/:topic/" />
+        <ArticleList path="/topics/:topic/:currentPage" />
       </Router>
     </div>
   );
