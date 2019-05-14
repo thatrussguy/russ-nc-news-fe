@@ -30,10 +30,15 @@ const ArticleList = ({ topic = "", currentPage = 1 }) => {
         state.articles.length ? (
           <div>
             <ul>
+              <li>
+                Title - <span>Date</span> - <span>Comments</span> -{" "}
+                <span>Votes</span>
+              </li>
               {state.articles.map(article => (
                 <li key={article.article_id}>
                   <Link to={`/articles/${article.article_id}`}>
-                    {article.title}
+                    {article.title} - {article.created_at} -{" "}
+                    {article.comment_count} - {article.votes}
                   </Link>
                 </li>
               ))}
