@@ -11,3 +11,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.article-list li {
+  display: grid;
+  grid-template-columns: 6fr 2fr 1fr 1fr;
+  text-align: left;
+}

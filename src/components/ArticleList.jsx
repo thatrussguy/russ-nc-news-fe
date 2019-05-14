@@ -5,14 +5,21 @@ import PaginationFooter from "../components/PaginationFooter";
 
 import fetchArticles from "../queries/fetchArticles";
 
-const ArticleList = ({ topic = "", currentPage = 1 }) => {
-  const [state, setState] = useState({ articles: null, currentPage: 1 });
+const ArticleList = ({ topic = null, currentPage = 1 }) => {
+  const [state, setState] = useState({
+    articles: null,
+    currentPage: 1,
+    sort_by: null
+  });
+  const [sort, setSort] = useState({ sort_by: null, order: "desc" });
 
   useEffect(() => {
     const fetchData = async () => {
       const { articles, total_count } = await fetchArticles({
         topic,
-        p: currentPage
+        p: currentPage,
+        sort_by: sort.sort_by,
+        order: sort.order
       });
       setState(
         articles.message
@@ -21,7 +28,16 @@ const ArticleList = ({ topic = "", currentPage = 1 }) => {
       );
     };
     fetchData();
-  }, [currentPage, topic]);
+  }, [currentPage, sort.order, sort.sort_by, topic]);
+
+  const onClick = e => {
+    console.log(e.target.id);
+    e.preventDefault();
+    setSort({
+      sort_by: e.target.id,
+      order: sort.order === "desc" ? "asc" : "desc"
+    });
+  };
 
   return (
     <div>
@@ -29,17 +45,37 @@ const ArticleList = ({ topic = "", currentPage = 1 }) => {
       {state.articles ? (
         state.articles.length ? (
           <div>
-            <ul>
+            <ul className="article-list">
               <li>
-                Title - <span>Date</span> - <span>Comments</span> -{" "}
-                <span>Votes</span>
+                <span>
+                  <Link to="./" onClick={onClick} id="title">
+                    Title
+                  </Link>
+                </span>
+                <span>
+                  <Link to="./" onClick={onClick} id="created_at">
+                    Date
+                  </Link>
+                </span>
+                <span>
+                  <Link to="./" onClick={onClick} id="comment_count">
+                    Comments
+                  </Link>
+                </span>
+                <span>
+                  <Link to="./" onClick={onClick} id="votes">
+                    Votes
+                  </Link>
+                </span>
               </li>
               {state.articles.map(article => (
                 <li key={article.article_id}>
                   <Link to={`/articles/${article.article_id}`}>
-                    {article.title} - {article.created_at} -{" "}
-                    {article.comment_count} - {article.votes}
+                    <span>{article.title}</span>
                   </Link>
+                  <span>{article.created_at}</span>
+                  <span>{article.comment_count}</span>
+                  <span>{article.votes}</span>
                 </li>
               ))}
             </ul>
