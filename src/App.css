@@ -18,6 +18,9 @@
 .vote-button {
   margin-left: 1vw;
 }
+.capitalize {
+  text-transform: capitalize;
+}
 
 @media only screen and (max-width: 400px) {
   .button-text {
