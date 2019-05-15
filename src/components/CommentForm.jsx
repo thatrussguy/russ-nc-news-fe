@@ -30,6 +30,7 @@ const CommentForm = ({
           large={true}
           fill={true}
           onChange={handleChange}
+          autoFocus
         />
         <Button
           type="submit"
