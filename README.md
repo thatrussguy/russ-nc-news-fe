@@ -1,5 +1,7 @@
 # NC News front-end web app
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8149e04c-15c9-4f03-acd5-d04edcd57cb3/deploy-status)](https://app.netlify.com/sites/russ-nc-news/deploys)
+
 [Try the app hosted on Netlify](https://russ-nc-news.netlify.com)
 
 This is my implementation of a front-end for Northcoders News. It is powered by my back-end implementation which is [hosted on Heroku](https://nameless-garden-54007.herokuapp.com/api)
