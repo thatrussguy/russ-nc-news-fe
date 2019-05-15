@@ -22,6 +22,7 @@ const CommentList = ({ article_id, comments, setComments, loggedInUser }) => {
   return (
     comments && (
       <div>
+        <h2 className="comment-list">Comments</h2>
         {comments.map(comment => (
           <CommentCard
             comment={comment}
