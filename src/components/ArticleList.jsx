@@ -41,7 +41,7 @@ const ArticleList = ({ topic }) => {
             Sort by:{" "}
             <Button
               className="sort-button"
-              icon="numbered-list"
+              icon="heart"
               onClick={() => handleClick("votes")}
             >
               <span className="button-text">Votes</span>
