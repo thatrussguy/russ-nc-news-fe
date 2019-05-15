@@ -44,21 +44,21 @@ const ArticleList = ({ topic }) => {
               icon="numbered-list"
               onClick={() => handleClick("votes")}
             >
-              Votes
+              <span className="button-text">Votes</span>
             </Button>
             <Button
               className="sort-button"
               icon="chat"
               onClick={() => handleClick("comment_count")}
             >
-              Comments
+              <span className="button-text">Comments</span>
             </Button>
             <Button
               className="sort-button"
               icon="calendar"
               onClick={() => handleClick("created_at")}
             >
-              Date
+              <span className="button-text">Date</span>
             </Button>
           </h4>
         </Card>
