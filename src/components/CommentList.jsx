@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Card } from "@blueprintjs/core";
 
 import fetchComments from "../queries/fetchComments";
-import { tsExternalModuleReference } from "@babel/types";
 
 const CommentList = ({ article_id }) => {
   const [comments, setComments] = useState(null);
 
   useEffect(() => {
-    let mounted = tsExternalModuleReference;
+    let mounted = true;
 
     const fetchData = async () => {
       const comments = await fetchComments(article_id);

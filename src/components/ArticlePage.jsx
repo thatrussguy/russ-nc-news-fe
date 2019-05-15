@@ -3,9 +3,11 @@ import { Button, Card } from "@blueprintjs/core";
 
 import fetchArticle from "../queries/fetchArticle";
 import CommentList from "../components/CommentList";
+import CommentForm from "../components/CommentForm";
 
-const ArticlePage = ({ article_id }) => {
+const ArticlePage = ({ article_id, loggedInUser }) => {
   const [article, setArticle] = useState(null);
+  const [showCommentForm, setShowCommentForm] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,8 +27,16 @@ const ArticlePage = ({ article_id }) => {
             {title} ({author})
           </h2>
           <p>{body}</p>
-          <Button>Add a comment</Button>
+          <Button
+            disabled={!loggedInUser}
+            onClick={() => setShowCommentForm(true)}
+          >
+            {loggedInUser ? "Add a comment" : "Login to add a comment"}
+          </Button>
         </Card>
+        {showCommentForm && (
+          <CommentForm article_id={article_id} loggedInUser={loggedInUser} />
+        )}
         <CommentList article_id={article_id} />
       </div>
     )

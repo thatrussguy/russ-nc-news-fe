@@ -21,7 +21,7 @@ function App() {
       <Router>
         <HomePage path="/" />
         <TopicsPage path="/topics/*" />
-        <ArticlePage path="/articles/:article_id" />
+        <ArticlePage path="/articles/:article_id" loggedInUser={loggedInUser} />
         <LoginPage
           path="/login"
           loggedInUser={loggedInUser}

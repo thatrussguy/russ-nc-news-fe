@@ -2,13 +2,15 @@
 .topic-list,
 .comment-list,
 .article,
-.login-form {
+.login-form,
+.comment-form {
   margin: 1vw;
 }
 .comment-list {
   margin-left: 2vw;
 }
-.login-button {
+.login-button,
+.comment-button {
   margin-top: 1vh;
 }
 .sort-button {
