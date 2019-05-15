@@ -29,7 +29,9 @@ const LoginPage = ({ loggedInUser, setLoggedInUser }) => {
       setLoggedInUser(usernameInput);
       navigate("/");
     } else {
-      setHelperText("Invalid username");
+      setHelperText(
+        "Invalid username. Use 'guest' if you don't have an account"
+      );
     }
   };
 
