@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Card } from "@blueprintjs/core";
+import React, { useEffect } from "react";
+import { Card, Button } from "@blueprintjs/core";
 
 import fetchComments from "../queries/fetchComments";
+import deleteComment from "../queries/deleteComment";
 
-const CommentList = ({ article_id, comments, setComments }) => {
+const CommentList = ({ article_id, comments, setComments, loggedInUser }) => {
   useEffect(() => {
     let mounted = true;
 
@@ -18,6 +19,10 @@ const CommentList = ({ article_id, comments, setComments }) => {
     };
   }, [article_id, setComments, comments]);
 
+  const handleClick = comment_id => {
+    deleteComment(comment_id);
+  };
+
   return (
     comments && (
       <div>
@@ -25,6 +30,9 @@ const CommentList = ({ article_id, comments, setComments }) => {
           <Card interactive={true} className="comment-list" key={comment_id}>
             <h5>{body}</h5>
             <p>written by {author}</p>
+            {loggedInUser === author && (
+              <Button onClick={() => handleClick(comment_id)}>Delete</Button>
+            )}
           </Card>
         ))}
       </div>

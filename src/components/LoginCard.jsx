@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { FormGroup, InputGroup, Button } from "@blueprintjs/core";
-import { navigate } from "@reach/router";
+import { FormGroup, InputGroup, Button, Card } from "@blueprintjs/core";
 
 import fetchUsernames from "../queries/fetchUsernames";
 
-const LoginPage = ({ loggedInUser, setLoggedInUser }) => {
+const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
   const [usernameInput, setUsernameInput] = useState("");
   const [usernames, setUsernames] = useState(null);
   const [helperText, setHelperText] = useState("You can log in as 'guest'...");
@@ -27,7 +26,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser }) => {
     event.preventDefault();
     if (usernames.includes(usernameInput)) {
       setLoggedInUser(usernameInput);
-      navigate("/");
+      setShowLoginForm(false);
     } else {
       setHelperText(
         "Invalid username. Use 'guest' if you don't have an account"
@@ -41,7 +40,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser }) => {
 
   return (
     usernames && (
-      <div className="login-form">
+      <Card className="login-form">
         <form onSubmit={handleSubmit}>
           <FormGroup
             helperText={helperText}
@@ -66,7 +65,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser }) => {
           </FormGroup>
         </form>
         {loggedInUser && <p>You are already logged in as {loggedInUser}</p>}
-      </div>
+      </Card>
     )
   );
 };

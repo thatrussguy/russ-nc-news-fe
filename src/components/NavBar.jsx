@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Alignment, Button } from "@blueprintjs/core";
 import { Link } from "@reach/router";
 
-const NavBar = ({ loggedInUser, setLoggedInUser }) => {
+const NavBar = ({ loggedInUser, setLoggedInUser , setShowLoginForm}) => {
   return (
     <Navbar>
       <Navbar.Group align={Alignment.LEFT}>
@@ -25,9 +25,7 @@ const NavBar = ({ loggedInUser, setLoggedInUser }) => {
             }}
           />
         ) : (
-          <Link to="/login">
-            <Button className="bp3-minimal" icon="log-in" text="Login" />
-          </Link>
+          <Button className="bp3-minimal" icon="log-in" text="Login" onClick={()=> setShowLoginForm(true)}/>
         )}
       </Navbar.Group>
     </Navbar>

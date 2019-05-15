@@ -47,6 +47,7 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
           article_id={article_id}
           comments={comments}
           setComments={setComments}
+          loggedInUser={loggedInUser}
         />
       </div>
     )
