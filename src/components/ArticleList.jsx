@@ -1,98 +1,85 @@
 import React, { useState, useEffect } from "react";
-import { Link, Router } from "@reach/router";
-
-import PaginationFooter from "../components/PaginationFooter";
+import { Link } from "@reach/router";
+import { Button, Card } from "@blueprintjs/core";
+import moment from "moment";
 
 import fetchArticles from "../queries/fetchArticles";
 
-const ArticleList = ({ topic = null, currentPage = 1 }) => {
-  const [state, setState] = useState({
-    articles: null,
-    currentPage: 1,
-    sort_by: null
-  });
-  const [sort, setSort] = useState({ sort_by: null, order: "desc" });
+const ArticleList = ({ topic }) => {
+  const [articles, setArticles] = useState(null);
+  const [sortBy, setSortBy] = useState(null);
+  const [sortOrder, setSortOrder] = useState(null);
 
   useEffect(() => {
+    let mounted = true;
+
     const fetchData = async () => {
-      const { articles, total_count } = await fetchArticles({
+      const articles = await fetchArticles({
         topic,
-        p: currentPage,
-        sort_by: sort.sort_by,
-        order: sort.order
+        sort_by: sortBy,
+        order: sortOrder
       });
-      setState(
-        articles.message
-          ? { articles: [], currentPage }
-          : { articles, total_count, currentPage }
-      );
+      mounted && setArticles(articles ? articles : []);
     };
     fetchData();
-  }, [currentPage, sort.order, sort.sort_by, topic]);
 
-  const onClick = e => {
-    e.preventDefault();
-    setSort({
-      sort_by: e.target.id,
-      order: sort.order === "desc" ? "asc" : "desc"
-    });
+    return () => {
+      mounted = false;
+    };
+  }, [topic, sortBy, sortOrder]);
+
+  const handleClick = sortKey => {
+    setSortBy(sortKey);
+    setSortOrder(sortOrder === "desc" ? "asc" : "desc");
   };
 
   return (
-    <div>
-      <h2>Latest Articles</h2>
-      {state.articles ? (
-        state.articles.length ? (
-          <div>
-            <ul className="article-list">
-              <li>
-                <span>
-                  <Link to="./" onClick={onClick} id="title">
-                    Title
-                  </Link>
-                </span>
-                <span>
-                  <Link to="./" onClick={onClick} id="created_at">
-                    Date
-                  </Link>
-                </span>
-                <span>
-                  <Link to="./" onClick={onClick} id="comment_count">
-                    Comments
-                  </Link>
-                </span>
-                <span>
-                  <Link to="./" onClick={onClick} id="votes">
-                    Votes
-                  </Link>
-                </span>
-              </li>
-              {state.articles.map(article => (
-                <li key={article.article_id}>
-                  <Link to={`/articles/${article.article_id}`}>
-                    <span>{article.title}</span>
-                  </Link>
-                  <span>{article.created_at}</span>
-                  <span>{article.comment_count}</span>
-                  <span>{article.votes}</span>
-                </li>
-              ))}
-            </ul>
-            <Router>
-              <PaginationFooter
-                path="*"
-                totalPages={Math.ceil(state.total_count / 10)}
-                currentPage={currentPage}
-              />
-            </Router>
-          </div>
-        ) : (
-          "No Articles for this topic"
-        )
-      ) : (
-        "Loading articles..."
-      )}
-    </div>
+    articles && (
+      <div>
+        <Card interactive={true} className="article-list">
+          <h4>
+            Sort by:{" "}
+            <Button
+              className="sort-button"
+              icon="numbered-list"
+              onClick={() => handleClick("votes")}
+            >
+              Votes
+            </Button>
+            <Button
+              className="sort-button"
+              icon="chat"
+              onClick={() => handleClick("comment_count")}
+            >
+              Comments
+            </Button>
+            <Button
+              className="sort-button"
+              icon="calendar"
+              onClick={() => handleClick("created_at")}
+            >
+              Date
+            </Button>
+          </h4>
+        </Card>
+        {articles.map(
+          ({ title, author, article_id, created_at, votes, comment_count }) => (
+            <Card interactive={true} className="article-list" key={article_id}>
+              <h3>
+                {title} (score: {votes}, comments: {comment_count})
+              </h3>
+              <p>
+                Written by {author} on{" "}
+                {moment(created_at).format("MMMM Do YYYY [at] h:mm a")}
+              </p>
+              <Link to={`/articles/${article_id}`}>
+                <Button>Read</Button>
+              </Link>
+            </Card>
+          )
+        )}
+      </div>
+    )
   );
 };
 

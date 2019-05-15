@@ -1,19 +1,16 @@
-.App {
-  text-align: center;
+.article-list,
+.topic-list,
+.comment-list,
+.article,
+.login-form {
+  margin: 1vw;
 }
-
-.App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.comment-list {
+  margin-left: 2vw;
 }
-
-.article-list li {
-  display: grid;
-  grid-template-columns: 6fr 2fr 1fr 1fr;
-  text-align: left;
+.login-button {
+  margin-top: 1vh;
+}
+.sort-button {
+  margin-left: 1vw;
 }

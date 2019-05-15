@@ -1,30 +1,32 @@
 import React, { useState } from "react";
-import { Router } from "@reach/router";
+
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "./App.css";
 
-import Header from "./components/Header";
-import NavigationBar from "./components/NavigationBar";
-import ArticleList from "./components/ArticleList";
-import TopicList from "./components/TopicList";
-import Article from "./components/Article";
+import { Router } from "@reach/router";
+
+import NavBar from "./components/NavBar";
+import HomePage from "./components/HomePage";
+import TopicsPage from "./components/TopicsPage";
+import ArticlePage from "./components/ArticlePage";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   return (
     <div className="App">
-      <Header />
-      <NavigationBar
-        loggedInUser={loggedInUser}
-        setLoggedInUser={setLoggedInUser}
-      />
+      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
       <Router>
-        <ArticleList path="/" />
-        <ArticleList path="/:currentPage" />
-        <Article path="/articles/:article_id" />
-        <TopicList path="/topics" />
-        <ArticleList path="/topics/:topic/" />
-        <ArticleList path="/topics/:topic/:currentPage" />
+        <HomePage path="/" />
+        <TopicsPage path="/topics/*" />
+        <ArticlePage path="/articles/:article_id" />
+        <LoginPage
+          path="/login"
+          loggedInUser={loggedInUser}
+          setLoggedInUser={setLoggedInUser}
+        />
       </Router>
     </div>
   );
