@@ -13,6 +13,7 @@
 .comment-button {
   margin-top: 1vh;
 }
-.sort-button {
+.sort-button,
+.vote-button {
   margin-left: 1vw;
 }

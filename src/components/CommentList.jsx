@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Card, Button } from "@blueprintjs/core";
+
+import CommentCard from "./CommentCard";
 
 import fetchComments from "../queries/fetchComments";
-import deleteComment from "../queries/deleteComment";
 
 const CommentList = ({ article_id, comments, setComments, loggedInUser }) => {
   useEffect(() => {
@@ -10,30 +10,26 @@ const CommentList = ({ article_id, comments, setComments, loggedInUser }) => {
 
     const fetchData = async () => {
       const comments = await fetchComments(article_id);
-      mounted && setComments(comments ? comments : []);
+      mounted && setComments(comments);
     };
     fetchData();
 
     return () => {
       mounted = false;
     };
-  }, [article_id, setComments, comments]);
-
-  const handleClick = comment_id => {
-    deleteComment(comment_id);
-  };
+  }, [article_id, setComments]);
 
   return (
     comments && (
       <div>
-        {comments.map(({ comment_id, author, body }) => (
-          <Card interactive={true} className="comment-list" key={comment_id}>
-            <h5>{body}</h5>
-            <p>written by {author}</p>
-            {loggedInUser === author && (
-              <Button onClick={() => handleClick(comment_id)}>Delete</Button>
-            )}
-          </Card>
+        {comments.map(comment => (
+          <CommentCard
+            comment={comment}
+            key={comment.comment_id}
+            loggedInUser={loggedInUser}
+            comments={comments}
+            setComments={setComments}
+          />
         ))}
       </div>
     )
