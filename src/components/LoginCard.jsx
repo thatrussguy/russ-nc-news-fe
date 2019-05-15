@@ -62,6 +62,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
             >
               Log in
             </Button>
+            <Button className="login-button"onClick={()=> setShowLoginForm(false)}>Cancel</Button>
           </FormGroup>
         </form>
         {loggedInUser && <p>You are already logged in as {loggedInUser}</p>}

@@ -38,6 +38,12 @@ const CommentForm = ({
         >
           Post Comment
         </Button>
+        <Button
+          className="comment-button"
+          onClick={() => setShowCommentForm(false)}
+        >
+          Cancel
+        </Button>
       </form>
     </Card>
   );
