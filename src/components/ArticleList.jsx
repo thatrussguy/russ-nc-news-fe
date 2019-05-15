@@ -35,7 +35,9 @@ const ArticleList = ({ topic }) => {
 
   return (
     <div>
-      <h1 className="article-list">{topic ? topic : "All"} articles</h1>
+      <h1 className="article-list">
+        {topic ? <span className="capitalize">{topic}</span> : "All"} articles
+      </h1>
       <h4 className="article-list">
         Sort by:{" "}
         <Button
