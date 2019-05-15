@@ -36,32 +36,31 @@ const ArticleList = ({ topic }) => {
   return (
     articles && (
       <div>
-        <Card interactive={true} className="article-list">
-          <h4>
-            Sort by:{" "}
-            <Button
-              className="sort-button"
-              icon="heart"
-              onClick={() => handleClick("votes")}
-            >
-              <span className="button-text">Votes</span>
-            </Button>
-            <Button
-              className="sort-button"
-              icon="chat"
-              onClick={() => handleClick("comment_count")}
-            >
-              <span className="button-text">Comments</span>
-            </Button>
-            <Button
-              className="sort-button"
-              icon="calendar"
-              onClick={() => handleClick("created_at")}
-            >
-              <span className="button-text">Date</span>
-            </Button>
-          </h4>
-        </Card>
+        <h1 className="article-list">{topic ? topic : "All"} articles</h1>
+        <h4 className="article-list">
+          Sort by:{" "}
+          <Button
+            className="sort-button"
+            icon="heart"
+            onClick={() => handleClick("votes")}
+          >
+            <span className="button-text">Votes</span>
+          </Button>
+          <Button
+            className="sort-button"
+            icon="chat"
+            onClick={() => handleClick("comment_count")}
+          >
+            <span className="button-text">Comments</span>
+          </Button>
+          <Button
+            className="sort-button"
+            icon="calendar"
+            onClick={() => handleClick("created_at")}
+          >
+            <span className="button-text">Date</span>
+          </Button>
+        </h4>
         {articles.map(
           ({ title, author, article_id, created_at, votes, comment_count }) => (
             <Card interactive={true} className="article-list" key={article_id}>
