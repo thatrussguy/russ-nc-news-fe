@@ -54,6 +54,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
               placeholder="Enter your username"
               disabled={loggedInUser ? true : false}
               onChange={handleChange}
+              autoFocus
             />
             <Button
               className="login-button"
@@ -62,7 +63,12 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
             >
               Log in
             </Button>
-            <Button className="login-button"onClick={()=> setShowLoginForm(false)}>Cancel</Button>
+            <Button
+              className="login-button"
+              onClick={() => setShowLoginForm(false)}
+            >
+              Cancel
+            </Button>
           </FormGroup>
         </form>
         {loggedInUser && <p>You are already logged in as {loggedInUser}</p>}
