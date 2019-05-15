@@ -3,9 +3,7 @@ import { Card } from "@blueprintjs/core";
 
 import fetchComments from "../queries/fetchComments";
 
-const CommentList = ({ article_id }) => {
-  const [comments, setComments] = useState(null);
-
+const CommentList = ({ article_id, comments, setComments }) => {
   useEffect(() => {
     let mounted = true;
 
@@ -18,7 +16,7 @@ const CommentList = ({ article_id }) => {
     return () => {
       mounted = false;
     };
-  }, [article_id]);
+  }, [article_id, setComments, comments]);
 
   return (
     comments && (

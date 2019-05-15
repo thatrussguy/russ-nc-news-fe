@@ -3,13 +3,14 @@ import { Card, TextArea, Button } from "@blueprintjs/core";
 
 import postComment from "../queries/postComment";
 
-const CommentForm = ({ article_id, loggedInUser }) => {
+const CommentForm = ({ article_id, loggedInUser, setShowCommentForm }) => {
   const [commentInput, setCommentInput] = useState("");
 
   const handleChange = ({ target: { value } }) => setCommentInput(value);
   const handleSubmit = event => {
     event.preventDefault();
     postComment(article_id, loggedInUser, commentInput);
+    setShowCommentForm(false);
   };
 
   return (

@@ -7,6 +7,8 @@ import CommentForm from "../components/CommentForm";
 
 const ArticlePage = ({ article_id, loggedInUser }) => {
   const [article, setArticle] = useState(null);
+  const [comments, setComments] = useState(null);
+
   const [showCommentForm, setShowCommentForm] = useState(false);
 
   useEffect(() => {
@@ -35,9 +37,17 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
           </Button>
         </Card>
         {showCommentForm && (
-          <CommentForm article_id={article_id} loggedInUser={loggedInUser} />
+          <CommentForm
+            article_id={article_id}
+            loggedInUser={loggedInUser}
+            setShowCommentForm={setShowCommentForm}
+          />
         )}
-        <CommentList article_id={article_id} />
+        <CommentList
+          article_id={article_id}
+          comments={comments}
+          setComments={setComments}
+        />
       </div>
     )
   );
