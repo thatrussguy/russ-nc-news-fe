@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
-import { Button, Card } from "@blueprintjs/core";
+import { Button, Card, Spinner } from "@blueprintjs/core";
 import moment from "moment";
 
 import fetchArticles from "../queries/fetchArticles";
@@ -34,34 +34,34 @@ const ArticleList = ({ topic }) => {
   };
 
   return (
-    articles && (
-      <div>
-        <h1 className="article-list">{topic ? topic : "All"} articles</h1>
-        <h4 className="article-list">
-          Sort by:{" "}
-          <Button
-            className="sort-button"
-            icon="heart"
-            onClick={() => handleClick("votes")}
-          >
-            <span className="button-text">Votes</span>
-          </Button>
-          <Button
-            className="sort-button"
-            icon="chat"
-            onClick={() => handleClick("comment_count")}
-          >
-            <span className="button-text">Comments</span>
-          </Button>
-          <Button
-            className="sort-button"
-            icon="calendar"
-            onClick={() => handleClick("created_at")}
-          >
-            <span className="button-text">Date</span>
-          </Button>
-        </h4>
-        {articles.map(
+    <div>
+      <h1 className="article-list">{topic ? topic : "All"} articles</h1>
+      <h4 className="article-list">
+        Sort by:{" "}
+        <Button
+          className="sort-button"
+          icon="heart"
+          onClick={() => handleClick("votes")}
+        >
+          <span className="button-text">Votes</span>
+        </Button>
+        <Button
+          className="sort-button"
+          icon="chat"
+          onClick={() => handleClick("comment_count")}
+        >
+          <span className="button-text">Comments</span>
+        </Button>
+        <Button
+          className="sort-button"
+          icon="calendar"
+          onClick={() => handleClick("created_at")}
+        >
+          <span className="button-text">Date</span>
+        </Button>
+      </h4>
+      {articles ? (
+        articles.map(
           ({ title, author, article_id, created_at, votes, comment_count }) => (
             <Card interactive={true} className="article-list" key={article_id}>
               <h3>
@@ -76,9 +76,11 @@ const ArticleList = ({ topic }) => {
               </Link>
             </Card>
           )
-        )}
-      </div>
-    )
+        )
+      ) : (
+        <Spinner className="article-list" />
+      )}
+    </div>
   );
 };
 

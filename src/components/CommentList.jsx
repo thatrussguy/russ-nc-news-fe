@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Spinner } from "@blueprintjs/core";
 
 import CommentCard from "./CommentCard";
 
@@ -20,10 +21,10 @@ const CommentList = ({ article_id, comments, setComments, loggedInUser }) => {
   }, [article_id, setComments]);
 
   return (
-    comments && (
-      <div>
-        <h2 className="comment-list">Comments</h2>
-        {comments.map(comment => (
+    <div>
+      <h2 className="comment-list">Comments</h2>
+      {comments ? (
+        comments.map(comment => (
           <CommentCard
             comment={comment}
             key={comment.comment_id}
@@ -31,9 +32,11 @@ const CommentList = ({ article_id, comments, setComments, loggedInUser }) => {
             comments={comments}
             setComments={setComments}
           />
-        ))}
-      </div>
-    )
+        ))
+      ) : (
+        <Spinner className="comment-list" />
+      )}
+    </div>
   );
 };
 
