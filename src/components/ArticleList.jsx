@@ -8,11 +8,17 @@ const ArticleList = ({ topic }) => {
   const [articles, setArticles] = useState(null);
 
   useEffect(() => {
+    let mounted = true;
+
     const fetchData = async () => {
       const articles = await fetchArticles({ topic });
-      setArticles(articles ? articles : []);
+      mounted && setArticles(articles ? articles : []);
     };
     fetchData();
+
+    return () => {
+      mounted = false;
+    };
   }, [topic]);
 
   return (

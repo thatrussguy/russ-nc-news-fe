@@ -8,11 +8,17 @@ const TopicList = () => {
   const [topics, setTopics] = useState(null);
 
   useEffect(() => {
+    let mounted = true;
+
     const fetchData = async () => {
       const topics = await fetchTopics();
-      setTopics(topics ? topics : []);
+      mounted && setTopics(topics ? topics : []);
     };
     fetchData();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (
