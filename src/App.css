@@ -21,6 +21,12 @@
 .capitalize {
   text-transform: capitalize;
 }
+.github-link,
+.github-link:hover {
+  color: #182026;
+  text-decoration: none;
+  cursor: help;
+}
 
 @media only screen and (max-width: 400px) {
   .button-text {

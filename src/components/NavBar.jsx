@@ -6,7 +6,17 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
   return (
     <Navbar>
       <Navbar.Group align={Alignment.LEFT}>
-        <Navbar.Heading>NC News</Navbar.Heading>
+        <Navbar.Heading>
+          <a
+            href="https://github.com/thatrussguy/russ-nc-news-frontend"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="github-link"
+          >
+            NC News
+          </a>
+        </Navbar.Heading>
+
         <Navbar.Divider />
         <Link to="/">
           <Button className="bp3-minimal" icon="home">
