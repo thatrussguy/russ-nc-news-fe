@@ -34,7 +34,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser }) => {
   };
 
   const handleChange = ({ target: { value } }) => {
-    setUsernameInput(value);
+    setUsernameInput(value.toLowerCase());
   };
 
   return (
