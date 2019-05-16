@@ -27,7 +27,7 @@ const CommentList = ({
     return () => {
       mounted = false;
     };
-  }, [article_id, setComments, page]);
+  }, [article_id, page, setComments]);
 
   return (
     <div>
@@ -38,9 +38,9 @@ const CommentList = ({
         comments.map(comment => (
           <CommentCard
             comment={comment}
+            comments={comments}
             key={comment.comment_id}
             loggedInUser={loggedInUser}
-            comments={comments}
             setComments={setComments}
           />
         ))
