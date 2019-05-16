@@ -79,21 +79,21 @@ const ArticleList = ({ topic, loggedInUser, author }) => {
       <h4 className="article-list">
         Sort by:{" "}
         <Button
-          className="sort-button"
+          className="sort-button bp3-minimal"
           icon="heart"
           onClick={() => handleClick("votes")}
         >
           <span className="button-text">Votes</span>
         </Button>
         <Button
-          className="sort-button"
+          className="sort-button bp3-minimal"
           icon="chat"
           onClick={() => handleClick("comment_count")}
         >
           <span className="button-text">Comments</span>
         </Button>
         <Button
-          className="sort-button"
+          className="sort-button bp3-minimal"
           icon="calendar"
           onClick={() => handleClick("created_at")}
         >

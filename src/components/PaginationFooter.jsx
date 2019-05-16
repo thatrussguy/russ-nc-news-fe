@@ -8,7 +8,7 @@ const PaginationFooter = ({ page, setPage, totalPages }) => {
       <Button
         disabled={page === 1}
         icon="double-chevron-left"
-        className="pagination-button"
+        className="pagination-button bp3-minimal"
         onClick={() => {
           setPage(1);
         }}
@@ -16,7 +16,7 @@ const PaginationFooter = ({ page, setPage, totalPages }) => {
       <Button
         disabled={page === 1}
         icon="chevron-left"
-        className="pagination-button"
+        className="pagination-button bp3-minimal"
         onClick={() => {
           setPage(page - 1);
         }}
@@ -27,7 +27,7 @@ const PaginationFooter = ({ page, setPage, totalPages }) => {
       <Button
         disabled={page === totalPages}
         icon="chevron-right"
-        className="pagination-button"
+        className="pagination-button bp3-minimal"
         onClick={() => {
           setPage(page + 1);
         }}
@@ -35,7 +35,7 @@ const PaginationFooter = ({ page, setPage, totalPages }) => {
       <Button
         disabled={page === totalPages}
         icon="double-chevron-right"
-        className="pagination-button"
+        className="pagination-button bp3-minimal"
         onClick={() => {
           setPage(totalPages);
         }}
