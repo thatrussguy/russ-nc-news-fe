@@ -1,27 +1,27 @@
-.article-list,
-.topic-list,
-.comment-list,
 .article,
-.login-form,
-.comment-form,
 .article-form,
+.article-list,
+.comment-form,
+.comment-list,
 .error-card,
-.pagination-footer {
+.login-form,
+.pagination-footer,
+.topic-list {
   margin: 1vw;
 }
 .comment-list {
   margin-left: 2vw;
 }
-.login-button,
-.comment-button,
+.article-button,
 .article-input,
-.article-button {
-  margin-top: 1vh;
+.comment-button,
+.login-button {
   margin-right: 1vw;
+  margin-top: 1vh;
 }
+.pagination-button,
 .sort-button,
-.vote-button,
-.pagination-button {
+.vote-button {
   margin-left: 1vw;
 }
 .capitalize {
@@ -30,12 +30,12 @@
 .github-link,
 .github-link:hover {
   color: #182026;
-  text-decoration: none;
   cursor: help;
+  text-decoration: none;
 }
 select {
-  -webkit-appearance: menulist !important;
   -moz-appearance: menulist !important;
+  -webkit-appearance: menulist !important;
   appearance: menulist !important;
 }
 .bp3-navbar {
