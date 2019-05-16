@@ -24,13 +24,13 @@ const TopicList = () => {
   return (
     topics && (
       <div>
-        <h1 className="topic-list">All topics</h1>
+        <h1 className="topic-list">All Topics</h1>
         {topics.map(({ slug, description }) => (
           <Card interactive={true} className="topic-list" key={slug}>
             <h2 className="capitalize">{slug}</h2>
             <p>{description}</p>
             <Link to={`/topics/${slug}`}>
-              <Button>{slug} articles</Button>
+              <Button className="capitalize">{slug} articles</Button>
             </Link>
           </Card>
         ))}
