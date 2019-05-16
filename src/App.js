@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
+import "./App.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
-import "./App.css";
 
 import { Router } from "@reach/router";
 
+import ArticleList from "./components/ArticleList";
+import ArticlePage from "./components/ArticlePage";
+import ErrorCard from "./components/ErrorCard";
+import LoginCard from "./components/LoginCard";
 import NavBar from "./components/NavBar";
 import TopicList from "./components/TopicList";
-import ArticlePage from "./components/ArticlePage";
-import ArticleList from "./components/ArticleList";
-import LoginCard from "./components/LoginCard";
-import ErrorCard from "./components/ErrorCard";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -34,13 +34,13 @@ function App() {
         )}
         <Router>
           <ArticleList path="/" loggedInUser={loggedInUser} />
-          <TopicList path="/topics" />
-          <ArticleList path="/topics/:topic" loggedInUser={loggedInUser} />
           <ArticlePage
             path="/articles/:article_id"
             loggedInUser={loggedInUser}
           />
           <ArticleList path="/:author/articles" loggedInUser={loggedInUser} />
+          <TopicList path="/topics" />
+          <ArticleList path="/topics/:topic" loggedInUser={loggedInUser} />
           <ErrorCard
             default
             error={{ status: 404, message: "Nothing found at this address" }}
