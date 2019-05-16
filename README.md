@@ -45,5 +45,5 @@ npm install
 Start the app locally
 
 ```bash
-npm run start
+npm start
 ```
