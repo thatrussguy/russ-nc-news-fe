@@ -59,7 +59,7 @@ const ArticleList = ({ topic, loggedInUser, author }) => {
   return (
     <div>
       <h1 className="article-list capitalize">
-        {topic ? topic : "All"} articles
+        {topic ? topic : author ? `${author}'s` : "All"} articles
       </h1>
       <Button
         disabled={!loggedInUser}
