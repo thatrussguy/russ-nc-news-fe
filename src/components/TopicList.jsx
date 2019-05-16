@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "@reach/router";
+import React, { useEffect, useState } from "react";
 import { Button, Card } from "@blueprintjs/core";
+import { Link } from "@reach/router";
 
 import fetchTopics from "../queries/fetchTopics";
 
