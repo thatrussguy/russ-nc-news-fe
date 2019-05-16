@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Alignment, Button } from "@blueprintjs/core";
+import { Alignment, Button, Navbar } from "@blueprintjs/core";
 import { Link } from "@reach/router";
 
 const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
@@ -8,13 +8,13 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
       <Navbar.Group align={Alignment.LEFT}>
         <Navbar.Heading>
           <a
+            className="github-link"
             href="https://github.com/thatrussguy/russ-nc-news-frontend"
             rel="noopener noreferrer"
             target="_blank"
-            className="github-link"
-
           >
-            NC<span className="button-text">{" "}</span>N<span className="button-text">ews</span>
+            NC<span className="button-text"> </span>N
+            <span className="button-text">ews</span>
           </a>
         </Navbar.Heading>
 
@@ -51,8 +51,8 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
           <Button
             className="bp3-minimal"
             icon="log-in"
-            text="Login"
             onClick={() => setShowLoginForm(true)}
+            text="Login"
           />
         )}
       </Navbar.Group>
