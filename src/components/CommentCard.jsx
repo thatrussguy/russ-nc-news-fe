@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Card, Button } from "@blueprintjs/core";
 import { Link } from "@reach/router";
+import moment from "moment";
 
 import deleteComment from "../queries/deleteComment";
 import voteOnComment from "../queries/voteOnComment";
 
 const CommentCard = ({
-  comment: { comment_id, body, author, votes },
+  comment: { comment_id, body, author, votes , created_at},
   loggedInUser,
   comments,
   setComments
@@ -26,8 +27,8 @@ const CommentCard = ({
     <Card interactive={true} className="comment-list" key={comment_id}>
       <h5>{body}</h5>
       <p>
-        Written by <Link to={`/${author}/articles`}>{author}</Link> -{" "}
-        {votes + myVote} votes
+        Written by <Link to={`/${author}/articles`}>{author}</Link> on{" "}
+        {moment(created_at).format("MMMM Do YYYY [at] h:mm a")}
       </p>
       {loggedInUser === author && (
         <Button onClick={() => handleDeleteClick(comment_id)}>Delete</Button>
