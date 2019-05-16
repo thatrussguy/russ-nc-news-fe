@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, Spinner } from "@blueprintjs/core";
+import {Link} from "@reach/router"
 
 import fetchArticle from "../queries/fetchArticle";
 import voteOnArticle from "../queries/voteOnArticle";
@@ -41,7 +42,7 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
       <Card interactive={true} className="article" key={article_id}>
         <h2>{title}</h2>
         <h3>
-          Written by {author} - {votes + myVote} votes
+          Written by <Link to={`/${author}/articles`}>{author}</Link> - {votes + myVote} votes
         </h3>
         <p>{body}</p>
         <Button
