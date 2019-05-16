@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Card, Button } from "@blueprintjs/core";
+import { Link } from "@reach/router";
 
 import deleteComment from "../queries/deleteComment";
 import voteOnComment from "../queries/voteOnComment";
@@ -25,7 +26,8 @@ const CommentCard = ({
     <Card interactive={true} className="comment-list" key={comment_id}>
       <h5>{body}</h5>
       <p>
-        Written by {author} - {votes + myVote} votes
+        Written by <Link to={`/${author}/articles`}>{author}</Link> -{" "}
+        {votes + myVote} votes
       </p>
       {loggedInUser === author && (
         <Button onClick={() => handleDeleteClick(comment_id)}>Delete</Button>

@@ -5,27 +5,37 @@ import moment from "moment";
 
 import ArticleForm from "./ArticleForm";
 import PaginationFooter from "./PaginationFooter";
+import ErrorCard from "../components/ErrorCard";
 
 import fetchArticles from "../queries/fetchArticles";
+import deleteArticle from "../queries/deleteArticle";
 
-const ArticleList = ({ topic, loggedInUser }) => {
+const ArticleList = ({ topic, loggedInUser, author }) => {
+  console.log();
+
   const [articles, setArticles] = useState(null);
   const [totalCount, setTotalCount] = useState(0);
   const [sortBy, setSortBy] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
   const [showArticleForm, setShowArticleForm] = useState(false);
   const [page, setPage] = useState(1);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     let mounted = true;
 
     const fetchData = async () => {
-      const { articles, total_count } = await fetchArticles({
+      const response = await fetchArticles({
         topic,
         sort_by: sortBy,
         order: sortOrder,
-        p: page
-      });
+        p: page,
+        author
+      }).catch(({ response: { data: { message }, status } }) =>
+        setError({ status, message })
+      );
+      let articles, total_count;
+      if (response) ({ articles, total_count } = response);
       mounted && setArticles(articles);
       mounted && setTotalCount(total_count);
     };
@@ -34,11 +44,16 @@ const ArticleList = ({ topic, loggedInUser }) => {
     return () => {
       mounted = false;
     };
-  }, [topic, sortBy, sortOrder, page]);
+  }, [topic, sortBy, sortOrder, page, author]);
 
   const handleClick = sortKey => {
     setSortBy(sortKey);
     setSortOrder(sortOrder === "desc" ? "asc" : "desc");
+  };
+
+  const handleDeleteClick = article_id => {
+    deleteArticle(article_id);
+    setArticles(articles.filter(article => article.article_id !== article_id));
   };
 
   return (
@@ -93,17 +108,27 @@ const ArticleList = ({ topic, loggedInUser }) => {
                 {title} (score: {votes}, comments: {comment_count})
               </h3>
               <p>
-                Written by {author} on{" "}
+                Written by <Link to={`/${author}/articles`}>{author}</Link> on{" "}
                 {moment(created_at).format("MMMM Do YYYY [at] h:mm a")}
               </p>
+              {loggedInUser === author && (
+                <Button
+                  onClick={() => handleDeleteClick(article_id)}
+                  className="article-button"
+                >
+                  Delete
+                </Button>
+              )}
               <Link to={`/articles/${article_id}`}>
-                <Button>Read</Button>
+                <Button className="article-button">Read</Button>
               </Link>
             </Card>
           )
         )
+      ) : error ? (
+        <ErrorCard error={error} />
       ) : (
-        <Spinner className="article-list" />
+        <Spinner className="article" />
       )}
       {totalCount ? (
         <PaginationFooter

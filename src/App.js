@@ -10,6 +10,7 @@ import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
 import TopicsPage from "./components/TopicsPage";
 import ArticlePage from "./components/ArticlePage";
+import ArticleList from "./components/ArticleList";
 import LoginCard from "./components/LoginCard";
 import ErrorCard from "./components/ErrorCard";
 
@@ -35,6 +36,7 @@ function App() {
         <HomePage path="/" loggedInUser={loggedInUser} />
         <TopicsPage path="/topics/*" loggedInUser={loggedInUser} />
         <ArticlePage path="/articles/:article_id" loggedInUser={loggedInUser} />
+        <ArticleList path="/:author/articles" loggedInUser={loggedInUser} />
         <ErrorCard
           default
           error={{ status: 404, message: "Nothing found at this address" }}
