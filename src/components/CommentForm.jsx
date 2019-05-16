@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { Card, TextArea, Button } from "@blueprintjs/core";
+import { Button, Card, TextArea } from "@blueprintjs/core";
 
 import postComment from "../queries/postComment";
 
 const CommentForm = ({
   article_id,
+  comments,
   loggedInUser,
-  setShowCommentForm,
   setComments,
-  comments
+  setShowCommentForm
 }) => {
   const [commentInput, setCommentInput] = useState("");
 
@@ -26,16 +26,16 @@ const CommentForm = ({
     <Card className="comment-form">
       <form onSubmit={handleSubmit}>
         <TextArea
+          autoFocus
+          fill={true}
           growVertically={true}
           large={true}
-          fill={true}
           onChange={handleChange}
-          autoFocus
         />
         <Button
-          type="submit"
           className="comment-button"
           disabled={!commentInput}
+          type="submit"
         >
           Post Comment
         </Button>
