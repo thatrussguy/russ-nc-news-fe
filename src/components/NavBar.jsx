@@ -29,16 +29,23 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
           </Button>
         </Link>
         {loggedInUser ? (
-          <Button
-            className="bp3-minimal"
-            icon="log-out"
-            onClick={e => {
-              e.preventDefault();
-              setLoggedInUser(null);
-            }}
-          >
-            <span className="button-text">{`Logout (${loggedInUser})`}</span>
-          </Button>
+          <span>
+            <Button
+              className="bp3-minimal"
+              icon="log-out"
+              onClick={e => {
+                e.preventDefault();
+                setLoggedInUser(null);
+              }}
+            >
+              <span className="button-text">Logout</span>
+            </Button>
+            <Link to={`/${loggedInUser}/articles`}>
+              <Button className="bp3-minimal" icon="person">
+                <span className="button-text">{loggedInUser}</span>
+              </Button>
+            </Link>
+          </span>
         ) : (
           <Button
             className="bp3-minimal"
