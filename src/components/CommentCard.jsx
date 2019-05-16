@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import { Card, Button } from "@blueprintjs/core";
-import { Link } from "@reach/router";
 import moment from "moment";
+import React, { useState } from "react";
+import { Button, Card } from "@blueprintjs/core";
+import { Link } from "@reach/router";
+
+import VoteButtons from "./VoteButtons";
 
 import deleteComment from "../queries/deleteComment";
 import voteOnComment from "../queries/voteOnComment";
 
 const CommentCard = ({
-  comment: { comment_id, body, author, votes, created_at },
-  loggedInUser,
+  comment: { author, body, comment_id, created_at, votes },
   comments,
+  loggedInUser,
   setComments
 }) => {
   const [myVote, setMyVote] = useState(0);
@@ -19,8 +21,8 @@ const CommentCard = ({
     setComments(comments.filter(comment => comment.comment_id !== comment_id));
   };
   const handleVoteClick = increment => {
-    setMyVote(myVote + increment);
     voteOnComment(comment_id, increment);
+    setMyVote(myVote + increment);
   };
 
   return (
@@ -34,17 +36,10 @@ const CommentCard = ({
       {loggedInUser === author && (
         <Button onClick={() => handleDeleteClick(comment_id)}>Delete</Button>
       )}
-      <Button
-        icon="thumbs-up"
-        className="vote-button"
-        disabled={!loggedInUser || myVote === 1}
-        onClick={() => handleVoteClick(1)}
-      />
-      <Button
-        icon="thumbs-down"
-        className="vote-button"
-        disabled={!loggedInUser || myVote === -1}
-        onClick={() => handleVoteClick(-1)}
+      <VoteButtons
+        handleVoteClick={handleVoteClick}
+        loggedInUser={loggedInUser}
+        myVote={myVote}
       />
     </Card>
   );
