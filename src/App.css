@@ -5,7 +5,8 @@
 .login-form,
 .comment-form,
 .article-form,
-.error-card {
+.error-card,
+.pagination-footer {
   margin: 1vw;
 }
 .comment-list {
@@ -19,7 +20,8 @@
   margin-right: 1vw;
 }
 .sort-button,
-.vote-button {
+.vote-button,
+.pagination-button {
   margin-left: 1vw;
 }
 .capitalize {

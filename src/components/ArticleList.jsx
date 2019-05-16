@@ -4,32 +4,37 @@ import { Button, Card, Spinner } from "@blueprintjs/core";
 import moment from "moment";
 
 import ArticleForm from "./ArticleForm";
+import PaginationFooter from "./PaginationFooter";
 
 import fetchArticles from "../queries/fetchArticles";
 
 const ArticleList = ({ topic, loggedInUser }) => {
   const [articles, setArticles] = useState(null);
+  const [totalCount, setTotalCount] = useState(0);
   const [sortBy, setSortBy] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
   const [showArticleForm, setShowArticleForm] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     let mounted = true;
 
     const fetchData = async () => {
-      const articles = await fetchArticles({
+      const { articles, total_count } = await fetchArticles({
         topic,
         sort_by: sortBy,
-        order: sortOrder
+        order: sortOrder,
+        p: page
       });
-      mounted && setArticles(articles ? articles : []);
+      mounted && setArticles(articles);
+      mounted && setTotalCount(total_count);
     };
     fetchData();
 
     return () => {
       mounted = false;
     };
-  }, [topic, sortBy, sortOrder]);
+  }, [topic, sortBy, sortOrder, page]);
 
   const handleClick = sortKey => {
     setSortBy(sortKey);
@@ -99,6 +104,13 @@ const ArticleList = ({ topic, loggedInUser }) => {
         )
       ) : (
         <Spinner className="article-list" />
+      )}
+      {articles && (
+        <PaginationFooter
+          page={page}
+          setPage={setPage}
+          totalPages={Math.ceil(totalCount / 10)}
+        />
       )}
     </div>
   );
