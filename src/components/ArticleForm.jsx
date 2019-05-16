@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Card, TextArea, Button, Spinner } from "@blueprintjs/core";
+import React, { useEffect, useState } from "react";
+import { Button, Card, Spinner, TextArea } from "@blueprintjs/core";
 
-import postArticle from "../queries/postArticle";
 import fetchTopics from "../queries/fetchTopics";
+import postArticle from "../queries/postArticle";
 
 const ArticleForm = ({
   loggedInUser,
-  setShowArticleForm,
-  setArticles,
   articles,
+  setArticles,
+  setShowArticleForm,
   topic
 }) => {
-  const [titleInput, setTitleInput] = useState("");
   const [bodyInput, setBodyInput] = useState("");
-  const [topics, setTopics] = useState(null);
   const [chosenTopic, setChosenTopic] = useState(topic || null);
+  const [titleInput, setTitleInput] = useState("");
+  const [topics, setTopics] = useState(null);
 
   useEffect(() => {
     let mounted = true;
@@ -38,7 +38,6 @@ const ArticleForm = ({
       chosenTopic || topics[0].slug,
       loggedInUser
     ).then(article => setArticles([article, ...articles]));
-
     setShowArticleForm(false);
   };
 
@@ -55,24 +54,24 @@ const ArticleForm = ({
           ))}
         </select>
         <input
-          type="text"
-          placeholder="Title"
-          onChange={({ target: { value } }) => setTitleInput(value)}
           autoFocus
           className="article-input bp3-input"
+          onChange={({ target: { value } }) => setTitleInput(value)}
+          placeholder="Title"
+          type="text"
         />
         <TextArea
+          className="article-input"
+          fill={true}
           growVertically={true}
           large={true}
-          fill={true}
           onChange={({ target: { value } }) => setBodyInput(value)}
           placeholder="Write your article here"
-          className="article-input"
         />
         <Button
-          type="submit"
           className="article-button"
           disabled={!titleInput || !bodyInput}
+          type="submit"
         >
           Post Article
         </Button>
