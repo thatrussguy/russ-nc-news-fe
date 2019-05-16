@@ -6,8 +6,8 @@ import ArticleForm from "./ArticleForm";
 import ErrorCard from "../components/ErrorCard";
 import PaginationFooter from "./PaginationFooter";
 
-import fetchArticles from "../queries/fetchArticles";
 import deleteArticle from "../queries/deleteArticle";
+import fetchArticles from "../queries/fetchArticles";
 
 const ArticleList = ({ author, loggedInUser, topic }) => {
   const [articles, setArticles] = useState(null);
@@ -29,7 +29,7 @@ const ArticleList = ({ author, loggedInUser, topic }) => {
         sort_by: sortBy,
         topic
       }).catch(({ response: { data: { message }, status } }) =>
-        setError({ status, message })
+        setError({ message, status })
       );
       let articles, total_count;
       if (response) ({ articles, total_count } = response);

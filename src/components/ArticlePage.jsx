@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Spinner } from "@blueprintjs/core";
-import {Link} from "@reach/router"
+import { Link } from "@reach/router";
+
+import CommentForm from "../components/CommentForm";
+import CommentList from "../components/CommentList";
+import ErrorCard from "../components/ErrorCard";
+import VoteButtons from "../components/VoteButtons";
 
 import fetchArticle from "../queries/fetchArticle";
 import voteOnArticle from "../queries/voteOnArticle";
-import CommentList from "../components/CommentList";
-import CommentForm from "../components/CommentForm";
-import ErrorCard from "../components/ErrorCard";
 
 const ArticlePage = ({ article_id, loggedInUser }) => {
   const [article, setArticle] = useState(null);
   const [comments, setComments] = useState(null);
-  const [showCommentForm, setShowCommentForm] = useState(false);
-  const [myVote, setMyVote] = useState(0);
   const [error, setError] = useState(null);
+  const [myVote, setMyVote] = useState(0);
+  const [showCommentForm, setShowCommentForm] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +26,7 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
             data: { message },
             status
           }
-        }) => setError({ status, message })
+        }) => setError({ message, status })
       );
       setArticle(article);
     };
@@ -35,14 +38,18 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
     voteOnArticle(article_id, increment);
   };
 
-  const { title, body, author, votes, comment_count } = article ? article : {};
+  const { author, body, comment_count, created_at, title, votes } = article
+    ? article
+    : {};
 
   return article ? (
     <div>
       <Card interactive={true} className="article" key={article_id}>
         <h2>{title}</h2>
         <h3>
-          Written by <Link to={`/${author}/articles`}>{author}</Link> - {votes + myVote} votes
+          Written by <Link to={`/${author}/articles`}>{author}</Link> on{" "}
+          {moment(created_at).format("MMMM Do YYYY [at] h:mm a")} (
+          {votes + myVote} votes)
         </h3>
         <p>{body}</p>
         <Button
@@ -51,17 +58,10 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
         >
           {loggedInUser ? "Add a comment" : "Login to add a comment"}
         </Button>
-        <Button
-          icon="thumbs-up"
-          className="vote-button"
-          disabled={!loggedInUser || myVote === 1}
-          onClick={() => handleVoteClick(1)}
-        />
-        <Button
-          icon="thumbs-down"
-          className="vote-button"
-          disabled={!loggedInUser || myVote === -1}
-          onClick={() => handleVoteClick(-1)}
+        <VoteButtons
+          handleVoteClick={handleVoteClick}
+          loggedInUser={loggedInUser}
+          myVote={myVote}
         />
       </Card>
       {showCommentForm && (
