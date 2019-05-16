@@ -1,7 +1,7 @@
-import { Card } from "@blueprintjs/core";
 import React from "react";
+import { Card } from "@blueprintjs/core";
 
-const ErrorCard = ({ error: { status, message } }) => {
+const ErrorCard = ({ error: { message, status } }) => {
   return (
     <Card className="error-card">
       <h1>Oops... {status}</h1>
