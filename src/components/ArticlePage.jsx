@@ -34,7 +34,7 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
     voteOnArticle(article_id, increment);
   };
 
-  const { title, body, author, votes } = article ? article : {};
+  const { title, body, author, votes, comment_count } = article ? article : {};
 
   return article ? (
     <div>
@@ -77,6 +77,7 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
         comments={comments}
         setComments={setComments}
         loggedInUser={loggedInUser}
+        totalCount={Number(comment_count)}
       />
     </div>
   ) : error ? (

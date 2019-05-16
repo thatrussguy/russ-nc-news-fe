@@ -1,9 +1,9 @@
 import backEndApiUrl from "../config/urls";
 import axios from "axios";
 
-const fetchComments = articleId => {
+const fetchComments = (articleId, params) => {
   return axios
-    .get(`${backEndApiUrl}/articles/${articleId}/comments`)
+    .get(`${backEndApiUrl}/articles/${articleId}/comments`, { params })
     .then(({ data: { comments } }) => comments);
 };
 

@@ -22,7 +22,7 @@ const PaginationFooter = ({ page, setPage, totalPages }) => {
         }}
       />
       <span className="pagination-button">
-        Page {page} of {totalPages}
+        Page {page} of {Math.max(totalPages, 1)}
       </span>
       <Button
         disabled={page === totalPages}
