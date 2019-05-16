@@ -12,8 +12,9 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
             rel="noopener noreferrer"
             target="_blank"
             className="github-link"
+
           >
-            NC News
+            NC<span className="button-text">{" "}</span>N<span className="button-text">ews</span>
           </a>
         </Navbar.Heading>
 
