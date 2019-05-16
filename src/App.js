@@ -7,7 +7,7 @@ import "./App.css";
 import { Router } from "@reach/router";
 
 import NavBar from "./components/NavBar";
-import TopicsPage from "./components/TopicsPage";
+import TopicList from "./components/TopicList";
 import ArticlePage from "./components/ArticlePage";
 import ArticleList from "./components/ArticleList";
 import LoginCard from "./components/LoginCard";
@@ -34,7 +34,8 @@ function App() {
         )}
         <Router>
           <ArticleList path="/" loggedInUser={loggedInUser} />
-          <TopicsPage path="/topics/*" loggedInUser={loggedInUser} />
+          <TopicList path="/topics" />
+          <ArticleList path="/topics/:topic" loggedInUser={loggedInUser} />
           <ArticlePage
             path="/articles/:article_id"
             loggedInUser={loggedInUser}
