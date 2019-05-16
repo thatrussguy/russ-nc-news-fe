@@ -7,7 +7,7 @@ import deleteComment from "../queries/deleteComment";
 import voteOnComment from "../queries/voteOnComment";
 
 const CommentCard = ({
-  comment: { comment_id, body, author, votes , created_at},
+  comment: { comment_id, body, author, votes, created_at },
   loggedInUser,
   comments,
   setComments
