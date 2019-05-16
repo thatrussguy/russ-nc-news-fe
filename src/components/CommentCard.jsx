@@ -28,7 +28,8 @@ const CommentCard = ({
       <h5>{body}</h5>
       <p>
         Written by <Link to={`/${author}/articles`}>{author}</Link> on{" "}
-        {moment(created_at).format("MMMM Do YYYY [at] h:mm a")}
+        {moment(created_at).format("MMMM Do YYYY [at] h:mm a")} (score:{" "}
+        {votes + myVote})
       </p>
       {loggedInUser === author && (
         <Button onClick={() => handleDeleteClick(comment_id)}>Delete</Button>
