@@ -38,6 +38,14 @@ select {
   -moz-appearance: menulist !important;
   appearance: menulist !important;
 }
+.bp3-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.App {
+  margin-top: 7.5vh;
+}
 
 @media only screen and (max-width: 500px) {
   .button-text {

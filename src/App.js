@@ -19,29 +19,34 @@ function App() {
   const [showLoginForm, setShowLoginForm] = useState(false);
 
   return (
-    <div className="App">
+    <div>
       <NavBar
         loggedInUser={loggedInUser}
         setLoggedInUser={setLoggedInUser}
         setShowLoginForm={setShowLoginForm}
       />
-      {showLoginForm && (
-        <LoginCard
-          loggedInUser={loggedInUser}
-          setLoggedInUser={setLoggedInUser}
-          setShowLoginForm={setShowLoginForm}
-        />
-      )}
-      <Router>
-        <HomePage path="/" loggedInUser={loggedInUser} />
-        <TopicsPage path="/topics/*" loggedInUser={loggedInUser} />
-        <ArticlePage path="/articles/:article_id" loggedInUser={loggedInUser} />
-        <ArticleList path="/:author/articles" loggedInUser={loggedInUser} />
-        <ErrorCard
-          default
-          error={{ status: 404, message: "Nothing found at this address" }}
-        />
-      </Router>
+      <div className="App">
+        {showLoginForm && (
+          <LoginCard
+            loggedInUser={loggedInUser}
+            setLoggedInUser={setLoggedInUser}
+            setShowLoginForm={setShowLoginForm}
+          />
+        )}
+        <Router>
+          <HomePage path="/" loggedInUser={loggedInUser} />
+          <TopicsPage path="/topics/*" loggedInUser={loggedInUser} />
+          <ArticlePage
+            path="/articles/:article_id"
+            loggedInUser={loggedInUser}
+          />
+          <ArticleList path="/:author/articles" loggedInUser={loggedInUser} />
+          <ErrorCard
+            default
+            error={{ status: 404, message: "Nothing found at this address" }}
+          />
+        </Router>
+      </div>
     </div>
   );
 }
