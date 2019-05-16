@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { FormGroup, InputGroup, Button, Card } from "@blueprintjs/core";
+import React, { useEffect, useState } from "react";
+import { Button, Card, FormGroup, InputGroup } from "@blueprintjs/core";
 
 import fetchUsernames from "../queries/fetchUsernames";
 
 const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
+  const [helperText, setHelperText] = useState("You can log in as 'guest'...");
   const [usernameInput, setUsernameInput] = useState("");
   const [usernames, setUsernames] = useState(null);
-  const [helperText, setHelperText] = useState("You can log in as 'guest'...");
 
   useEffect(() => {
     let mounted = true;
@@ -43,23 +43,23 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
       <Card className="login-form">
         <form onSubmit={handleSubmit}>
           <FormGroup
+            disabled={loggedInUser ? true : false}
             helperText={helperText}
             label="Username"
             labelFor="username-input"
             labelInfo="(required)"
-            disabled={loggedInUser ? true : false}
           >
             <InputGroup
-              id="username-input"
-              placeholder="Enter your username"
-              disabled={loggedInUser ? true : false}
-              onChange={handleChange}
               autoFocus
+              disabled={loggedInUser ? true : false}
+              id="username-input"
+              onChange={handleChange}
+              placeholder="Enter your username"
             />
             <Button
               className="login-button"
-              type="submit"
               disabled={loggedInUser ? true : false}
+              type="submit"
             >
               Log in
             </Button>
@@ -71,7 +71,6 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
             </Button>
           </FormGroup>
         </form>
-        {loggedInUser && <p>You are already logged in as {loggedInUser}</p>}
       </Card>
     )
   );
