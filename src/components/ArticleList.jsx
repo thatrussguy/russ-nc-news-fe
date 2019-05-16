@@ -87,12 +87,14 @@ const ArticleList = ({ author, loggedInUser, topic }) => {
       ) : (
         <Spinner className="article" />
       )}
-      {totalCount && (
+      {totalCount ? (
         <PaginationFooter
           page={page}
           setPage={setPage}
           totalPages={Math.ceil(totalCount / 10)}
         />
+      ) : (
+        ""
       )}
     </div>
   );

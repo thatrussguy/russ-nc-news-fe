@@ -1,4 +1,5 @@
 import Axios from "axios";
+
 import { backEndApiUrl } from "../config/urls";
 
 const voteOnArticle = (article_id, inc_votes) => {

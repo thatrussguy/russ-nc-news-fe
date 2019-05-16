@@ -1,5 +1,6 @@
-import { backEndApiUrl } from "../config/urls";
 import axios from "axios";
+
+import { backEndApiUrl } from "../config/urls";
 
 const fetchArticles = params => {
   return axios
