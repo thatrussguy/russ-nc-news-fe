@@ -1,4 +1,4 @@
-import backEndApiUrl from "../config/urls";
+import { backEndApiUrl } from "../config/urls";
 
 const fetchUsernames = () => {
   return fetch(`${backEndApiUrl}/users`)

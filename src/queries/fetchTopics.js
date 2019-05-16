@@ -1,4 +1,4 @@
-import backEndApiUrl from "../config/urls";
+import { backEndApiUrl } from "../config/urls";
 
 const fetchTopics = () => {
   return fetch(`${backEndApiUrl}/topics`)

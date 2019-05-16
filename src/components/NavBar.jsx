@@ -2,6 +2,8 @@ import React from "react";
 import { Alignment, Button, Navbar } from "@blueprintjs/core";
 import { Link } from "@reach/router";
 
+import { githubUrl } from "../config/urls";
+
 const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
   return (
     <Navbar>
@@ -9,7 +11,7 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
         <Navbar.Heading>
           <a
             className="github-link"
-            href="https://github.com/thatrussguy/russ-nc-news-frontend"
+            href={githubUrl}
             rel="noopener noreferrer"
             target="_blank"
           >

@@ -1,4 +1,4 @@
-import backEndApiUrl from "../config/urls";
+import { backEndApiUrl } from "../config/urls";
 import axios from "axios";
 
 const fetchComments = (articleId, params) => {
