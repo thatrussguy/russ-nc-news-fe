@@ -3,12 +3,15 @@ import { Link } from "@reach/router";
 import { Button, Card, Spinner } from "@blueprintjs/core";
 import moment from "moment";
 
+import ArticleForm from "./ArticleForm";
+
 import fetchArticles from "../queries/fetchArticles";
 
-const ArticleList = ({ topic }) => {
+const ArticleList = ({ topic, loggedInUser }) => {
   const [articles, setArticles] = useState(null);
   const [sortBy, setSortBy] = useState(null);
   const [sortOrder, setSortOrder] = useState(null);
+  const [showArticleForm, setShowArticleForm] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -35,9 +38,24 @@ const ArticleList = ({ topic }) => {
 
   return (
     <div>
-      <h1 className="article-list">
-        {topic ? <span className="capitalize">{topic}</span> : "All"} articles
+      <h1 className="article-list capitalize">
+        {topic ? topic : "All"} articles
       </h1>
+      <Button
+        disabled={!loggedInUser}
+        className="article"
+        text={loggedInUser ? "Write an article" : "Login to write an article"}
+        onClick={() => setShowArticleForm(true)}
+      />
+      {showArticleForm && (
+        <ArticleForm
+          loggedInUser={loggedInUser}
+          setShowArticleForm={setShowArticleForm}
+          articles={articles}
+          setArticles={setArticles}
+          topic={topic}
+        />
+      )}
       <h4 className="article-list">
         Sort by:{" "}
         <Button

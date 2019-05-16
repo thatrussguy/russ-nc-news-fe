@@ -32,8 +32,8 @@ function App() {
         />
       )}
       <Router>
-        <HomePage path="/" />
-        <TopicsPage path="/topics/*" />
+        <HomePage path="/" loggedInUser={loggedInUser} />
+        <TopicsPage path="/topics/*" loggedInUser={loggedInUser} />
         <ArticlePage path="/articles/:article_id" loggedInUser={loggedInUser} />
         <ErrorCard
           default

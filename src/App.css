@@ -4,6 +4,7 @@
 .article,
 .login-form,
 .comment-form,
+.article-form,
 .error-card {
   margin: 1vw;
 }
@@ -11,7 +12,9 @@
   margin-left: 2vw;
 }
 .login-button,
-.comment-button {
+.comment-button,
+.article-input,
+.article-button {
   margin-top: 1vh;
   margin-right: 1vw;
 }
@@ -27,6 +30,11 @@
   color: #182026;
   text-decoration: none;
   cursor: help;
+}
+select {
+  -webkit-appearance: menulist !important;
+  -moz-appearance: menulist !important;
+  appearance: menulist !important;
 }
 
 @media only screen and (max-width: 400px) {

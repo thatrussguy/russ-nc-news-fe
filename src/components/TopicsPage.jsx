@@ -4,11 +4,11 @@ import { Router } from "@reach/router";
 import TopicList from "./TopicList";
 import ArticleList from "./ArticleList";
 
-const TopicsPage = () => {
+const TopicsPage = ({ loggedInUser }) => {
   return (
     <Router>
       <TopicList path="/" />
-      <ArticleList path="/:topic/" />
+      <ArticleList path="/:topic/" loggedInUser={loggedInUser} />
     </Router>
   );
 };
