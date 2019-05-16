@@ -7,7 +7,6 @@ import "./App.css";
 import { Router } from "@reach/router";
 
 import NavBar from "./components/NavBar";
-import HomePage from "./components/HomePage";
 import TopicsPage from "./components/TopicsPage";
 import ArticlePage from "./components/ArticlePage";
 import ArticleList from "./components/ArticleList";
@@ -34,7 +33,7 @@ function App() {
           />
         )}
         <Router>
-          <HomePage path="/" loggedInUser={loggedInUser} />
+          <ArticleList path="/" loggedInUser={loggedInUser} />
           <TopicsPage path="/topics/*" loggedInUser={loggedInUser} />
           <ArticlePage
             path="/articles/:article_id"
