@@ -11,6 +11,7 @@ import HomePage from "./components/HomePage";
 import TopicsPage from "./components/TopicsPage";
 import ArticlePage from "./components/ArticlePage";
 import LoginCard from "./components/LoginCard";
+import ErrorCard from "./components/ErrorCard";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -34,6 +35,10 @@ function App() {
         <HomePage path="/" />
         <TopicsPage path="/topics/*" />
         <ArticlePage path="/articles/:article_id" loggedInUser={loggedInUser} />
+        <ErrorCard
+          default
+          error={{ status: 404, message: "Nothing found at this address" }}
+        />
       </Router>
     </div>
   );

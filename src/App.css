@@ -3,7 +3,8 @@
 .comment-list,
 .article,
 .login-form,
-.comment-form {
+.comment-form,
+.error-card {
   margin: 1vw;
 }
 .comment-list {

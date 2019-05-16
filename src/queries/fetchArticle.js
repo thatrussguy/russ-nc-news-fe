@@ -1,8 +1,9 @@
 import backEndApiUrl from "../config/urls";
+import Axios from "axios";
 
 const fetchArticle = article_id => {
-  return fetch(`${backEndApiUrl}/articles/${article_id}`).then(response =>
-    response.json().then(({ article }) => article)
+  return Axios.get(`${backEndApiUrl}/articles/${article_id}`).then(
+    ({ data: { article } }) => article
   );
 };
 
