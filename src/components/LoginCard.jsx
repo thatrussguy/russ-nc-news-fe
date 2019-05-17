@@ -41,7 +41,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
 
   return (
     usernames && (
-      <Card className="login-form">
+      <Card className="login-form" role="form">
         <form onSubmit={handleSubmit}>
           <FormGroup
             disabled={loggedInUser ? true : false}

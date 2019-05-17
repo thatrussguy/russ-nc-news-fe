@@ -45,6 +45,7 @@ const ArticleForm = ({
     <Card className="article-form">
       <form onSubmit={handleSubmit}>
         <select
+          aria-label="topic"
           className="article-input bp3-input capitalize"
           defaultValue={topic ? topic : ""}
           onChange={({ target: { value } }) => setChosenTopic(value)}
@@ -54,6 +55,7 @@ const ArticleForm = ({
           ))}
         </select>
         <input
+          aria-label="title"
           autoFocus
           className="article-input bp3-input"
           onChange={({ target: { value } }) => setTitleInput(value)}
@@ -61,6 +63,7 @@ const ArticleForm = ({
           type="text"
         />
         <TextArea
+          aria-label="body"
           className="article-input"
           fill={true}
           growVertically={true}

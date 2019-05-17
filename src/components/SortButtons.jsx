@@ -3,7 +3,7 @@ import { Button } from "@blueprintjs/core";
 
 const SortButtons = ({ handleSortClick }) => {
   return (
-    <h4 className="article-list">
+    <div className="article-list">
       Sort by:{" "}
       <Button
         className="sort-button bp3-minimal"
@@ -26,7 +26,7 @@ const SortButtons = ({ handleSortClick }) => {
       >
         <span className="button-text">Date</span>
       </Button>
-    </h4>
+    </div>
   );
 };
 

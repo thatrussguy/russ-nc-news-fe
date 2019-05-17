@@ -6,7 +6,7 @@ import { githubUrl } from "../config/urls";
 
 const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
   return (
-    <Navbar>
+    <Navbar role="navigation">
       <Navbar.Group align={Alignment.LEFT}>
         <Navbar.Heading>
           <a

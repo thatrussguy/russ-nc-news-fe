@@ -45,13 +45,13 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
   return article ? (
     <div>
       <Card interactive={true} className="article" key={article_id}>
-        <h2>{title}</h2>
-        <h3>
+        <h1 className="article-title">{title}</h1>
+        <p>
           Written by <Link to={`/${author}/articles`}>{author}</Link> on{" "}
           {moment(created_at).format("MMMM Do YYYY [at] h:mm a")} (
           {votes + myVote} votes)
-        </h3>
-        <p>{body}</p>
+        </p>
+        <p className="article-body">{body}</p>
         <Button
           disabled={!loggedInUser}
           onClick={() => setShowCommentForm(true)}

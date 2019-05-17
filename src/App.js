@@ -34,7 +34,7 @@ function App() {
             setShowLoginForm={setShowLoginForm}
           />
         )}
-        <Router>
+        <Router role="main">
           <ArticleList path="/" loggedInUser={loggedInUser} />
           <ArticlePage
             path="/articles/:article_id"
