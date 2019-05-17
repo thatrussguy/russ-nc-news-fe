@@ -82,7 +82,12 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
       />
     </div>
   ) : error ? (
-    <ErrorCard error={error} />
+    <ErrorCard
+      error={{
+        status: error.status,
+        message: `Invalid or non-existent Article ID: ${article_id}`
+      }}
+    />
   ) : (
     <Spinner className="article" />
   );

@@ -84,7 +84,21 @@ const ArticleList = ({ author, loggedInUser, topic }) => {
           />
         ))
       ) : error ? (
-        <ErrorCard error={error} />
+        <ErrorCard
+          error={
+            topic
+              ? {
+                  status: error.status,
+                  message: `Topic ${topic} does not exist or it has no articles yet`
+                }
+              : author
+              ? {
+                  status: error.status,
+                  message: `Author ${author} does not exist or they haven't written any articles yet`
+                }
+              : error
+          }
+        />
       ) : (
         <Spinner className="article" />
       )}
