@@ -39,6 +39,7 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
               onClick={e => {
                 e.preventDefault();
                 setLoggedInUser(null);
+                localStorage.removeItem("loggedInUser");
               }}
             >
               <span className="button-text">Logout</span>

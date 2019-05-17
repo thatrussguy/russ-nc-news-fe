@@ -14,7 +14,9 @@ import NavBar from "./components/NavBar";
 import TopicList from "./components/TopicList";
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(
+    localStorage.getItem("loggedInUser") || null
+  );
   const [showLoginForm, setShowLoginForm] = useState(false);
 
   return (

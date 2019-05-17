@@ -26,6 +26,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
     event.preventDefault();
     if (usernames.includes(usernameInput)) {
       setLoggedInUser(usernameInput);
+      localStorage.setItem("loggedInUser", usernameInput);
       setShowLoginForm(false);
     } else {
       setHelperText(
