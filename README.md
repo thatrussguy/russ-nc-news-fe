@@ -13,11 +13,11 @@ Northcoders News has articles which are divided into topics. Each article has us
 ## Built With
 
 - [Axios](https://github.com/axios/axios)
-- [Blueprint](https://blueprintjs.com)
+- [Blueprint 3](https://blueprintjs.com)
 - [Create React App](https://facebook.github.io/create-react-app/)
-- [Moment](https://momentjs.com)
-- [Node](https://nodejs.org)
-- [React](https://reactjs.org/)
+- [Moment 2](https://momentjs.com)
+- [Node 12](https://nodejs.org)
+- [React 16.8 (the one with hooks)](https://reactjs.org/)
 - [Reach Router](https://reach.tech/router)
 - [Russ-nc-news-backend](https://github.com/thatrussguy/russ-nc-news-backend)
 
@@ -25,8 +25,8 @@ Northcoders News has articles which are divided into topics. Each article has us
 
 ### Prerequisites
 
-- [Git CLI](https://git-scm.com/)
-- [Node.JS](https://nodejs.org)
+- [Git CLI (version >= 2)](https://git-scm.com/)
+- [Node (version >= 10.15.3)](https://nodejs.org)
 
 ### Instructions
 
@@ -34,6 +34,12 @@ Clone this repo
 
 ```bash
 git clone https://github.com/thatrussguy/russ-nc-news-frontend.git
+```
+
+Open project folder
+
+```bash
+cd russ-nc-news-frontend
 ```
 
 Install dependencies
