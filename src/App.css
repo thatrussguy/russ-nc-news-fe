@@ -51,4 +51,19 @@ select {
   .button-text {
     display: none;
   }
+  .App,
+  .bp3-navbar-group {
+    margin-left: initial;
+    margin-right: initial;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .App {
+    margin-top: 10vh;
+    margin-left: 20vw;
+    margin-right: 20vw;
+  }
+  .bp3-navbar-group {
+    margin-left: 20vw;
+  }
 }
