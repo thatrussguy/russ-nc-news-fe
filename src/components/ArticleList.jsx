@@ -79,6 +79,7 @@ const ArticleList = ({ author, loggedInUser, topic }) => {
           <ArticleCard
             article={article}
             handleDeleteClick={handleDeleteClick}
+            key={article.article_id}
             loggedInUser={loggedInUser}
           />
         ))
