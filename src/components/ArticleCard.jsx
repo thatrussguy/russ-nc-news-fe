@@ -10,12 +10,13 @@ const ArticleCard = ({
 }) => {
   return (
     <Card interactive={true} className="article-list" key={article_id}>
-      <p className="article-title">
-        {title} (score: {votes}, comments: {comment_count})
-      </p>
+      <p className="article-title">{title}</p>
       <p>
         Written by <Link to={`/${author}/articles`}>{author}</Link> on{" "}
         {moment(created_at).format("MMMM Do YYYY [at] h:mm a")}
+      </p>
+      <p>
+        Votes: {votes} Comments: {comment_count}
       </p>
       {loggedInUser === author && (
         <Button
