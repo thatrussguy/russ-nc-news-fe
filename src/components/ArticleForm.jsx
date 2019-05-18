@@ -5,8 +5,8 @@ import fetchTopics from "../queries/fetchTopics";
 import postArticle from "../queries/postArticle";
 
 const ArticleForm = ({
-  loggedInUser,
   articles = [],
+  loggedInUser,
   setArticles,
   setShowArticleForm,
   topic
@@ -76,7 +76,7 @@ const ArticleForm = ({
         <Button
           className="article-button"
           data-cy="post-article-button"
-          disabled={!titleInput || !bodyInput}
+          disabled={!titleInput || !bodyInput || !loggedInUser}
           type="submit"
         >
           Post Article
