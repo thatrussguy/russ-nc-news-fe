@@ -75,6 +75,7 @@ const ArticleList = ({ author, loggedInUser, topic }) => {
       </h1>
       <Button
         className="article"
+        data-cy="write-article-button"
         disabled={!loggedInUser}
         onClick={() => setShowArticleForm(true)}
         text={loggedInUser ? "Write an article" : "Login to write an article"}

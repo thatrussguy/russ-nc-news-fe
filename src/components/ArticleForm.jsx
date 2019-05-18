@@ -58,6 +58,7 @@ const ArticleForm = ({
           aria-label="title"
           autoFocus
           className="article-input bp3-input"
+          data-cy="article-title-input"
           onChange={({ target: { value } }) => setTitleInput(value)}
           placeholder="Title"
           type="text"
@@ -65,6 +66,7 @@ const ArticleForm = ({
         <TextArea
           aria-label="body"
           className="article-input"
+          data-cy="article-body-input"
           fill={true}
           growVertically={true}
           large={true}
@@ -73,6 +75,7 @@ const ArticleForm = ({
         />
         <Button
           className="article-button"
+          data-cy="post-article-button"
           disabled={!titleInput || !bodyInput}
           type="submit"
         >
