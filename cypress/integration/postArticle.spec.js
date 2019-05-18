@@ -10,6 +10,7 @@ describe("Posting an article", () => {
     cy.get('[data-cy="article-title-input"]').type("Testing...");
     cy.get('[data-cy="article-body-input"]').type("...posting an article");
     cy.get('[data-cy="post-article-button"]').click();
+    cy.wait(500);
     cy.get('[data-cy="article-title-text"]').contains("Testing...");
   });
   it("disables the write new article button when not logged in", () => {
