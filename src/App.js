@@ -41,7 +41,7 @@ function App() {
             loggedInUser={loggedInUser}
           />
           <ArticleList path="/:author/articles" loggedInUser={loggedInUser} />
-          <TopicList path="/topics" />
+          <TopicList path="/topics" loggedInUser={loggedInUser} />
           <ArticleList path="/topics/:topic" loggedInUser={loggedInUser} />
           <ErrorCard
             default

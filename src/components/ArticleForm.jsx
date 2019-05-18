@@ -6,7 +6,7 @@ import postArticle from "../queries/postArticle";
 
 const ArticleForm = ({
   loggedInUser,
-  articles,
+  articles = [],
   setArticles,
   setShowArticleForm,
   topic

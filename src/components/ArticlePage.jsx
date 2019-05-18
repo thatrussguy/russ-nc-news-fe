@@ -17,6 +17,7 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
   const [error, setError] = useState(null);
   const [myVote, setMyVote] = useState(0);
   const [showCommentForm, setShowCommentForm] = useState(false);
+  const [totalCount, setTotalCount] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,10 +68,12 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
       {showCommentForm && (
         <CommentForm
           article_id={article_id}
-          loggedInUser={loggedInUser}
-          setShowCommentForm={setShowCommentForm}
           comments={comments}
+          loggedInUser={loggedInUser}
           setComments={setComments}
+          setShowCommentForm={setShowCommentForm}
+          setTotalCount={setTotalCount}
+          totalCount={totalCount}
         />
       )}
       <CommentList
@@ -78,7 +81,7 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
         comments={comments}
         setComments={setComments}
         loggedInUser={loggedInUser}
-        totalCount={Number(comment_count)}
+        totalCount={totalCount || Number(comment_count)}
       />
     </div>
   ) : error ? (

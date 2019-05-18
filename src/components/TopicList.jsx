@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "@blueprintjs/core";
 import { Link } from "@reach/router";
 
+import TopicForm from "./TopicForm";
+
 import fetchTopics from "../queries/fetchTopics";
 
-const TopicList = () => {
+const TopicList = ({ loggedInUser }) => {
+  const [showTopicForm, setShowTopicForm] = useState(false);
   const [topics, setTopics] = useState(null);
 
   useEffect(() => {
@@ -25,6 +28,22 @@ const TopicList = () => {
     topics && (
       <div>
         <h1 className="topic-list">All Topics</h1>
+        <Button
+          className="topic"
+          disabled={!loggedInUser}
+          onClick={() => setShowTopicForm(true)}
+          text={
+            loggedInUser ? "Create a new topic" : "Login to create a new topic"
+          }
+        />
+        {showTopicForm && (
+          <TopicForm
+            loggedInUser={loggedInUser}
+            topics={topics}
+            setTopics={setTopics}
+            setShowTopicForm={setShowTopicForm}
+          />
+        )}
         {topics.map(({ slug, description }) => (
           <Card interactive={true} className="topic-list" key={slug}>
             <h2 className="capitalize">{slug}</h2>

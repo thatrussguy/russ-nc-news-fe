@@ -6,6 +6,8 @@
 .error-card,
 .login-form,
 .pagination-footer,
+.topic,
+.topic-form,
 .topic-list {
   margin: 1vw;
 }
@@ -15,7 +17,9 @@
 .article-button,
 .article-input,
 .comment-button,
-.login-button {
+.login-button,
+.topic-button,
+.topic-input {
   margin-right: 1vw;
   margin-top: 1vh;
 }

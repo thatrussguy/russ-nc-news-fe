@@ -9,6 +9,8 @@ import SortButtons from "./SortButtons";
 
 import deleteArticle from "../queries/deleteArticle";
 import fetchArticles from "../queries/fetchArticles";
+import fetchTopics from "../queries/fetchTopics";
+import fetchUsernames from "../queries/fetchUsernames";
 
 const ArticleList = ({ author, loggedInUser, topic }) => {
   const [articles, setArticles] = useState(null);
@@ -29,9 +31,22 @@ const ArticleList = ({ author, loggedInUser, topic }) => {
         p: page,
         sort_by: sortBy,
         topic
-      }).catch(({ response: { data: { message }, status } }) =>
-        setError({ message, status })
-      );
+      }).catch(({ response: { data: { message }, status } }) => {
+        if (topic) {
+          fetchTopics().then(topics => {
+            topics.map(topic => topic.slug).includes(topic)
+              ? setArticles([])
+              : setError({ message, status });
+          });
+        }
+        if (author) {
+          fetchUsernames().then(usernames => {
+            usernames.includes(author)
+              ? setArticles([])
+              : setError({ message, status });
+          });
+        } else setError({ message, status });
+      });
       let articles, total_count;
       if (response) ({ articles, total_count } = response);
       mounted && setArticles(articles);
@@ -75,26 +90,30 @@ const ArticleList = ({ author, loggedInUser, topic }) => {
       )}
       <SortButtons handleSortClick={handleSortClick} />
       {articles ? (
-        articles.map(article => (
-          <ArticleCard
-            article={article}
-            handleDeleteClick={handleDeleteClick}
-            key={article.article_id}
-            loggedInUser={loggedInUser}
-          />
-        ))
+        articles.length ? (
+          articles.map(article => (
+            <ArticleCard
+              article={article}
+              handleDeleteClick={handleDeleteClick}
+              key={article.article_id}
+              loggedInUser={loggedInUser}
+            />
+          ))
+        ) : (
+          <h2 className="article">Not articles yet...</h2>
+        )
       ) : error ? (
         <ErrorCard
           error={
             topic
               ? {
                   status: error.status,
-                  message: `Topic ${topic} does not exist or it has no articles yet`
+                  message: `Topic ${topic} does not exist`
                 }
               : author
               ? {
                   status: error.status,
-                  message: `Author ${author} does not exist or they haven't written any articles yet`
+                  message: `Author ${author} does not exist`
                 }
               : error
           }

@@ -8,16 +8,19 @@ const CommentForm = ({
   comments,
   loggedInUser,
   setComments,
-  setShowCommentForm
+  setShowCommentForm,
+  setTotalCount,
+  totalCount
 }) => {
   const [commentInput, setCommentInput] = useState("");
 
   const handleChange = ({ target: { value } }) => setCommentInput(value);
   const handleSubmit = event => {
     event.preventDefault();
-    postComment(article_id, loggedInUser, commentInput).then(comment =>
-      setComments([comment, ...comments])
-    );
+    postComment(article_id, loggedInUser, commentInput).then(comment => {
+      setComments([comment, ...comments]);
+      setTotalCount(totalCount + 1);
+    });
 
     setShowCommentForm(false);
   };
