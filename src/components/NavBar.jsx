@@ -35,6 +35,7 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
           <span>
             <Button
               className="bp3-minimal"
+              data-cy="navbar-logout-button"
               icon="log-out"
               onClick={e => {
                 e.preventDefault();
@@ -53,6 +54,7 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
         ) : (
           <Button
             className="bp3-minimal"
+            data-cy="navbar-login-button"
             icon="log-in"
             onClick={() => setShowLoginForm(true)}
             text="Login"

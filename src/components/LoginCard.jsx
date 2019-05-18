@@ -42,7 +42,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
   return (
     usernames && (
       <Card className="login-form" role="form">
-        <form onSubmit={handleSubmit}>
+        <form data-cy="login-form" onSubmit={handleSubmit}>
           <FormGroup
             disabled={loggedInUser ? true : false}
             helperText={helperText}
@@ -52,6 +52,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
           >
             <InputGroup
               autoFocus
+              data-cy="username-input"
               disabled={loggedInUser ? true : false}
               id="username-input"
               onChange={handleChange}
@@ -59,6 +60,7 @@ const LoginPage = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
             />
             <Button
               className="login-button"
+              data-cy="form-login-button"
               disabled={loggedInUser ? true : false}
               type="submit"
             >

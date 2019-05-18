@@ -15,6 +15,7 @@ Northcoders News has articles which are divided into topics. Each article has us
 - [Axios](https://github.com/axios/axios)
 - [Blueprint 3](https://blueprintjs.com)
 - [Create React App](https://facebook.github.io/create-react-app/)
+- [Cypress 3](https://cypress.io)
 - [Moment 2](https://momentjs.com)
 - [Node 12](https://nodejs.org)
 - [React 16.8 (the one with hooks)](https://reactjs.org/)
