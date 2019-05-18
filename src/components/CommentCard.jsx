@@ -27,7 +27,9 @@ const CommentCard = ({
 
   return (
     <Card interactive={true} className="comment-list" key={comment_id}>
-      <p className="comment-body">{body}</p>
+      <p className="comment-body" data-cy="comment-body">
+        {body}
+      </p>
       <p>
         Written by <Link to={`/authors/${author}`}>{author}</Link> on{" "}
         {moment(created_at).format("MMMM Do YYYY [at] h:mm a")} (score:{" "}

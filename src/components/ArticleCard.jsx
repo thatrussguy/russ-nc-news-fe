@@ -29,7 +29,9 @@ const ArticleCard = ({
         </Button>
       )}
       <Link to={`/articles/${article_id}`}>
-        <Button className="article-button">Read</Button>
+        <Button className="article-button" data-cy="read-article-button">
+          Read
+        </Button>
       </Link>
     </Card>
   );

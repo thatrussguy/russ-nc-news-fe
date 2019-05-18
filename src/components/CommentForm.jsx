@@ -30,6 +30,7 @@ const CommentForm = ({
       <form onSubmit={handleSubmit}>
         <TextArea
           autoFocus
+          data-cy="comment-body-input"
           fill={true}
           growVertically={true}
           large={true}
@@ -37,7 +38,8 @@ const CommentForm = ({
         />
         <Button
           className="comment-button"
-          disabled={!commentInput}
+          data-cy="post-comment-button"
+          disabled={!commentInput || !loggedInUser}
           type="submit"
         >
           Post Comment

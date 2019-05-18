@@ -54,6 +54,7 @@ const ArticlePage = ({ article_id, loggedInUser }) => {
         </p>
         <p className="article-body">{body}</p>
         <Button
+          data-cy="add-comment-button"
           disabled={!loggedInUser}
           onClick={() => setShowCommentForm(true)}
         >
