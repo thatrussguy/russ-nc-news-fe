@@ -100,7 +100,7 @@ const ArticleList = ({ author, loggedInUser, topic }) => {
             />
           ))
         ) : (
-          <h2 className="article">Not articles yet...</h2>
+          <h2 className="article">No articles yet...</h2>
         )
       ) : error ? (
         <ErrorCard

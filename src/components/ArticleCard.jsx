@@ -12,7 +12,7 @@ const ArticleCard = ({
     <Card interactive={true} className="article-list" key={article_id}>
       <p className="article-title">{title}</p>
       <p>
-        Written by <Link to={`/${author}/articles`}>{author}</Link> on{" "}
+        Written by <Link to={`/authors/${author}`}>{author}</Link> on{" "}
         {moment(created_at).format("MMMM Do YYYY [at] h:mm a")}
       </p>
       <p>

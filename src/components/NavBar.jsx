@@ -44,7 +44,7 @@ const NavBar = ({ loggedInUser, setLoggedInUser, setShowLoginForm }) => {
             >
               <span className="button-text">Logout</span>
             </Button>
-            <Link to={`/${loggedInUser}/articles`}>
+            <Link to={`/authors/${loggedInUser}`}>
               <Button className="bp3-minimal" icon="person">
                 <span className="button-text">{loggedInUser}</span>
               </Button>
