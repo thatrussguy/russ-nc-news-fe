@@ -4,7 +4,7 @@
 
 [Try the app hosted on Netlify](https://russ-nc-news.netlify.com)
 
-This is my implementation of a front-end for Northcoders News. It is powered by my back-end implementation which is [hosted on Heroku](https://nameless-garden-54007.herokuapp.com/api)
+This is my implementation of a front-end for Northcoders News. It is powered by my back-end implementation which is [hosted on Heroku](https://russ-nc-news-api.herokuapp.com/api)
 
 Northcoders News is a social news aggregation, web content rating, and discussion website. Think something along the lines of Reddit.
 
